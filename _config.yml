@@ -105,7 +105,7 @@ analytics:
 # Site Author
 author:
   name             : "JIBIN SONG"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/프로필.jpg"
   bio              : "상상을 현실로 만드는 개발자"
   location         : "Seoul, Korea"
   email            :
@@ -140,7 +140,7 @@ footer:
       # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url:
+      url: "https://github.com/jibin86"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:
