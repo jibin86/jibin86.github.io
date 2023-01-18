@@ -105,7 +105,7 @@ analytics:
 # Site Author
 author:
   name             : "JIBIN SONG"
-  avatar           : "/assets/images/프로필.jpg"
+  avatar           : "../assets/images/profile.jpg"
   bio              : "상상을 현실로 만드는 개발자"
   location         : "Seoul, Korea"
   email            :
