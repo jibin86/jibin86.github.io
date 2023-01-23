@@ -11,16 +11,15 @@
             <span><strong>전체</strong> </style> <span style="font-family:'Coming Soon';">({{sum}})</style></style> 
       </li>
 
-      <!--프로젝트-->
+      
+
       <li>
+        <!--프로젝트-->
         {% for category in site.categories %}
             {% if category[0] == "Project" %}
-                <a href="/categories/Project" class=""><span class="nav__sub-title">Project ({{category[1].size}})#</span></a>
+                <a href="/categories/Project" class=""><span class="nav__sub-title">Project ({{category[1].size}})</span></a>
             {% endif %}
         {% endfor %}
-
-
-      <li>
         <span class="nav__sub-title">Artificial Intelligence</span>
             <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
             <ul>
@@ -96,7 +95,14 @@
                     {% endif %}
                 {% endfor %}
             </ul>
-            
+        
+        
+        <!--ETC-->
+        {% for category in site.categories %}
+            {% if category[0] == "ETC" %}
+                <a href="/categories/ETC" class=""><span class="nav__sub-title">ETC ({{category[1].size}})</span></a>
+            {% endif %}
+        {% endfor %}    
 
         
       </li>
