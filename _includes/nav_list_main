@@ -17,7 +17,7 @@
         <!--프로젝트-->
         {% for category in site.categories %}
             {% if category[0] == "Project" %}
-                <a href="/categories/Project" class=""><span class="nav__sub-title">Project ({{category[1].size}})</span></a>
+                <a href="/categories/project" class=""><span class="nav__sub-title">Project ({{category[1].size}})</span></a>
             {% endif %}
         {% endfor %}
         <span class="nav__sub-title">Artificial Intelligence</span>
@@ -26,81 +26,57 @@
                 <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
                 <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
                 {% for category in site.categories %}
-                    {% if category[0] == "NLP" %}
-                        <li><a href="/categories/NLP" class="">NLP ({{category[1].size}})</a></li>
+                    {% if category[0] == "Natural Language Processing" %}
+                        <li><a href="/categories/nlp" class="">NLP ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "CV" %}
-                        <li><a href="/categories/CV" class="">Computer Vision ({{category[1].size}})</a></li>
+                    {% if category[0] == "Computer Vision" %}
+                        <li><a href="/categories/cv" class="">CV ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "DL" %}
-                        <li><a href="/categories/DL" class="">Deep Learning ({{category[1].size}})</a></li>
+                    {% if category[0] == "Recommender Systems" %}
+                        <li><a href="/categories/recsys" class="">RecSys ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
            
-        <!--코딩테스트-->
-        <span class="nav__sub-title">Coding Test</span>
+        <!--프로그래밍-->
+        <span class="nav__sub-title">Programming</span>
             <ul>
+                <!--Algorithm-->
                 {% for category in site.categories %}
                     {% if category[0] == "Algorithm" %}
-                        <li><a href="/categories/Algorithm" class="">알고리즘 ({{category[1].size}})</a></li>
+                        <li><a href="/categories/algorithm" class="">Algorithm ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
+                <!--Python-->
                 {% for category in site.categories %}
-                    {% if category[0] == "Baekjoon" %}
-                        <li><a href="/categories/Baekjoon" class="">백준 ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "Programmers" %}
-                        <li><a href="/categories/Programmers" class="">프로그래머스 ({{category[1].size}})</a></li>
+                    {% if category[0] == "Python" %}
+                        <li><a href="/categories/python" class="">Python ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>          
 
-        <span class="nav__sub-title">IT Community</span>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "SOLUX" %}
-                        <li><a href="/categories/Solux" class="">SOLUX ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "GDSC" %}
-                        <li><a href="/categories/GDSC" class="">GDSC ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-
-        <!--통계/수학-->
-        <span class="nav__sub-title">Statistic / Math</span>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "flask" %}
-                        <li><a href="/categories/flask" class="">Flask ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
+        <!--Statistic / Math-->
+        {% for category in site.categories %}
+            {% if category[0] == "Statistic Math" %}
+                <a href="/categories/statistic_math" class=""><span class="nav__sub-title">Statistic / Math ({{category[1].size}})</span></a>
+            {% endif %}
+        {% endfor %}
         
         
         <!--ETC-->
         {% for category in site.categories %}
             {% if category[0] == "ETC" %}
-                <a href="/categories/ETC" class=""><span class="nav__sub-title">ETC ({{category[1].size}})</span></a>
+                <a href="/categories/etc" class=""><span class="nav__sub-title">ETC ({{category[1].size}})</span></a>
             {% endif %}
         {% endfor %}    
 
