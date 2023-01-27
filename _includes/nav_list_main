@@ -65,22 +65,27 @@
                 {% endfor %}
             </ul>          
 
-        <!--Statistic / Math-->
-        {% for category in site.categories %}
-            {% if category[0] == "Statistic Math" %}
-                <a href="/categories/statistic_math" class=""><span class="nav__sub-title">Statistic / Math ({{category[1].size}})</span></a>
-            {% endif %}
-        {% endfor %}
-        
+        <!--Statistic & Math-->
+        <span class="nav__sub-title">Statistic & Math</span>
+        <ul>
+            <!--Statistic & Math-->
+            {% for category in site.categories %}
+                {% if category[0] == "Statistic & Math" %}
+                    <li><a href="/categories/statistic_math" class="">Statistic & Math ({{category[1].size}})</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
         
         <!--ETC-->
-        {% for category in site.categories %}
-            {% if category[0] == "ETC" %}
-                <a href="/categories/etc" class=""><span class="nav__sub-title">ETC ({{category[1].size}})</span></a>
-            {% endif %}
-        {% endfor %}    
-
-        
+        <span class="nav__sub-title">ETC</span>
+        <ul>
+            <!--Statistic & Math-->
+            {% for category in site.categories %}
+                {% if category[0] == "ETC" %}
+                    <li><a href="/categories/etc" class="">ETC ({{category[1].size}})</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>        
       </li>
   </ul>
 </nav>

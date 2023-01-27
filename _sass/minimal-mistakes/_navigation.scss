@@ -121,8 +121,8 @@
   &--pager {
     display: block;
     padding: 1em 2em;
-    float: left;
-    width: 50%;
+    // float: left;
+    width: 100%;
     font-family: $sans-serif;
     font-size: $type-size-5;
     font-weight: bold;
@@ -152,8 +152,13 @@
       pointer-events: none;
       cursor: not-allowed;
     }
+    .prev_next {
+      // font-family: $cute;
+      color:#f59ca0;
+    }
   }
 }
+
 
 .page__content + .pagination,
 .page__meta + .pagination,
@@ -491,12 +496,13 @@
 .nav__sub-title {
   display: block;
   margin: 0.5rem 0;
-  padding: 0.25rem 0;
+  // padding: 0.25rem 0;
   font-family: $sans-serif-narrow;
-  font-size: $type-size-6;
-  font-weight: bold;
-  text-transform: uppercase;
-  border-bottom: 1px solid $border-color;
+  font-size: $type-size-5;
+  color: #e86d74;
+  font-weight: bolder;
+  // text-transform: uppercase;
+  border-bottom: 2px solid $border-color;
 }
 
 /*
