@@ -295,5 +295,8 @@ defaults:
       show_date: true
       mathjax: true
       sidebar_main: true # 사이드바 활성화
+      toc: true # 포스트의 헤더들만 보여주는 목차 
+      toc_sticky: true  # 목차가 스크롤을 따라 움직이게 된다
+      toc_label: 목차
 
 date_format: "%Y-%m-%d"
