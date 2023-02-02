@@ -1,5 +1,5 @@
 ---
-title:  "[Project] Politic News Portal UI 제작"
+title:  "[Project] Politics News Portal UI 제작"
 # excerpt: "프로젝트 '정치적 편향도를 제공하는 뉴스 포털' 제작 과정을 담아보았다."
 categories: [Front-End, Project]
 tags: [HTML, Bootstrap, Project]
@@ -151,13 +151,13 @@ tags: [HTML, Bootstrap, Project]
     >
     <link rel="stylesheet" href="style.css">
 
-    <title>Politic News Portal</title>
+    <title>Politics News Portal</title>
   </head>
   <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container">
-        <a class="navbar-brand" href="#">Politic News Portal</a>
+        <a class="navbar-brand" href="#">Politics News Portal</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -194,7 +194,7 @@ tags: [HTML, Bootstrap, Project]
     <!-- Jumbotron -->
     <div class="jumbotron jumbotron-fluid bg-primary text-white">
       <div class="container">
-        <h1 class="display-4">Politic News Portal</h1>
+        <h1 class="display-4">Politics News Portal</h1>
         <p class="lead">Stay updated with the latest political news and events around the world</p>
       </div>
     </div>
