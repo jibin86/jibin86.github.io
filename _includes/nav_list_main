@@ -3,89 +3,131 @@
 {% assign sum = site.posts | size %}
 
 <nav class="nav__list">
-  <input id="ac-toc" name="accordion-toc" type="checkbox" />
-  <label for="ac-toc">{{ site.data.ui-text[site.locale].menu_label }}</label>
-  <ul class="nav__items" id="category_tag_menu">
-      <!--전체 글 수-->
-      <li>
-            <span><strong>전체</strong> </style> <span style="font-family:'Coming Soon';">({{sum}})</style></style> 
-      </li>
+    <input id="ac-toc" name="accordion-toc" type="checkbox" />
+    <label for="ac-toc">{{ site.data.ui-text[site.locale].menu_label }}</label>
+    <ul class="nav__items" id="category_tag_menu">
+        <!--전체 글 수-->
+        <li>
+            <span><strong>전체</strong> </style> <span style="font-family:'Coming Soon';">({{sum}})</style>
+                    </style>
+        </li>
 
-      
 
-      <li>
-        <!--프로젝트-->
-        {% for category in site.categories %}
-            {% if category[0] == "Project" %}
-                <a href="/categories/project" class=""><span class="nav__sub-title">Project ({{category[1].size}})</span></a>
-            {% endif %}
-        {% endfor %}
-        <span class="nav__sub-title">AI Tech</span>
+
+        <li>
+            <span class="nav__sub-title">Project</span>
+            <ul>
+                <!--Project-->
+                {% for category in site.categories %}
+                {% if category[0] == "Project" %}
+                <li><a href="/categories/project" class="">project ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+
+            <span class="nav__sub-title">AI Tech</span>
             <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
             <ul>
                 <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
-                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
                 {% for category in site.categories %}
-                    {% if category[0] == "Natural Language Processing" %}
-                        <li><a href="/categories/nlp" class="">NLP ({{category[1].size}})</a></li>
-                    {% endif %}
+                {% if category[0] == "Natural Language Processing" %}
+                <li><a href="/categories/nlp" class="">NLP ({{category[1].size}})</a></li>
+                {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Computer Vision" %}
-                        <li><a href="/categories/cv" class="">CV ({{category[1].size}})</a></li>
-                    {% endif %}
+                {% if category[0] == "Computer Vision" %}
+                <li><a href="/categories/cv" class="">CV ({{category[1].size}})</a></li>
+                {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Recommender Systems" %}
-                        <li><a href="/categories/recsys" class="">RecSys ({{category[1].size}})</a></li>
-                    {% endif %}
+                {% if category[0] == "Recommender Systems" %}
+                <li><a href="/categories/recsys" class="">RecSys ({{category[1].size}})</a></li>
+                {% endif %}
                 {% endfor %}
             </ul>
-           
-        <!--프로그래밍-->
-        <span class="nav__sub-title">Programming</span>
+            <ul>
+                {% for category in site.categories %}
+                {% if category[0] == "Hands-On ML" %}
+                <li><a href="/categories/hands_on_ml" class="">Hands-On ML ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+
+            <!--Statistic & Math-->
+            <span class="nav__sub-title">Statistic & Math</span>
+            <ul>
+                <!--Statistic & Math-->
+                {% for category in site.categories %}
+                {% if category[0] == "Statistic & Math" %}
+                <li><a href="/categories/statistic_math" class="">Statistic & Math ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+
+            
+            <!--프로그래밍-->
+            <span class="nav__sub-title">Programming</span>
             <ul>
                 <!--Algorithm-->
                 {% for category in site.categories %}
-                    {% if category[0] == "Algorithm" %}
-                        <li><a href="/categories/algorithm" class="">Algorithm ({{category[1].size}})</a></li>
-                    {% endif %}
+                {% if category[0] == "Algorithm" %}
+                <li><a href="/categories/algorithm" class="">Algorithm ({{category[1].size}})</a></li>
+                {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 <!--Python-->
                 {% for category in site.categories %}
-                    {% if category[0] == "Python" %}
-                        <li><a href="/categories/python" class="">Python ({{category[1].size}})</a></li>
-                    {% endif %}
+                {% if category[0] == "Python" %}
+                <li><a href="/categories/python" class="">Python ({{category[1].size}})</a></li>
+                {% endif %}
                 {% endfor %}
-            </ul>          
+            </ul>
 
-        <!--Statistic & Math-->
-        <span class="nav__sub-title">Statistic & Math</span>
-        <ul>
-            <!--Statistic & Math-->
-            {% for category in site.categories %}
-                {% if category[0] == "Statistic & Math" %}
-                    <li><a href="/categories/statistic_math" class="">Statistic & Math ({{category[1].size}})</a></li>
+
+            <span class="nav__sub-title">Back-End</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
+                {% for category in site.categories %}
+                {% if category[0] == "Flask" %}
+                <li><a href="/categories/flask" class="">Flask ({{category[1].size}})</a></li>
                 {% endif %}
-            {% endfor %}
-        </ul>
+                {% endfor %}
+            </ul>
+
+            <span class="nav__sub-title">Front-End</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
+                {% for category in site.categories %}
+                {% if category[0] == "Front-End" %}
+                <li><a href="/categories/frontend" class="">Front-End ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+
+            
+
         
-        <!--ETC-->
-        <span class="nav__sub-title">ETC</span>
-        <ul>
-            <!--Statistic & Math-->
-            {% for category in site.categories %}
+
+            <!--ETC-->
+            <span class="nav__sub-title">ETC</span>
+            <ul>
+                <!--ETC-->
+                {% for category in site.categories %}
                 {% if category[0] == "ETC" %}
-                    <li><a href="/categories/etc" class="">ETC ({{category[1].size}})</a></li>
+                <li><a href="/categories/etc" class="">ETC ({{category[1].size}})</a></li>
                 {% endif %}
-            {% endfor %}
-        </ul>        
-      </li>
-  </ul>
+                {% endfor %}
+            </ul>
+        </li>
+    </ul>
 </nav>
