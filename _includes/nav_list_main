@@ -13,8 +13,11 @@
         </li>
 
 
-
+        
         <li>
+
+            <!-- 프로젝트 -->
+
             <span class="nav__sub-title">Project</span>
             <ul>
                 <!--Project-->
@@ -24,6 +27,10 @@
                 {% endif %}
                 {% endfor %}
             </ul>
+
+
+            
+            <!-- AI Tech -->
 
             <span class="nav__sub-title">AI Tech</span>
             <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
@@ -52,13 +59,23 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                {% if category[0] == "Hands-On ML" %}
-                <li><a href="/categories/hands_on_ml" class="">Hands-On ML ({{category[1].size}})</a></li>
+                {% if category[0] == "Machine Learning" %}
+                <li><a href="/categories/ml" class="">Machine Learning ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                {% if category[0] == "Deep Learning" %}
+                <li><a href="/categories/dl" class="">Deep Learning ({{category[1].size}})</a></li>
                 {% endif %}
                 {% endfor %}
             </ul>
 
+
+
             <!--Statistic & Math-->
+
             <span class="nav__sub-title">Statistic & Math</span>
             <ul>
                 <!--Statistic & Math-->
@@ -69,8 +86,40 @@
                 {% endfor %}
             </ul>
 
-            
+
+            <!--Python-->
+
+            <span class="nav__sub-title">Python</span>
+            <ul>
+                <!--Statistic & Math-->
+                {% for category in site.categories %}
+                {% if category[0] == "Basic" %}
+                <li><a href="/categories/basic" class="">Basic ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                <!--Statistic & Math-->
+                {% for category in site.categories %}
+                {% if category[0] == "Data handling" %}
+                <li><a href="/categories/data_handling" class="">Data handling ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                <!--Statistic & Math-->
+                {% for category in site.categories %}
+                {% if category[0] == "Crawling or Scraping" %}
+                <li><a href="/categories/crawling_scraping" class="">Crawling or Scraping ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+
+
+
+
             <!--프로그래밍-->
+
             <span class="nav__sub-title">Programming</span>
             <ul>
                 <!--Algorithm-->
@@ -80,30 +129,20 @@
                 {% endif %}
                 {% endfor %}
             </ul>
-            <ul>
-                <!--Python-->
-                {% for category in site.categories %}
-                {% if category[0] == "Python" %}
-                <li><a href="/categories/python" class="">Python ({{category[1].size}})</a></li>
-                {% endif %}
-                {% endfor %}
-            </ul>
 
 
-            <span class="nav__sub-title">Back-End</span>
+            <!-- Web -->
+            <span class="nav__sub-title">Web</span>
             <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
             <ul>
                 <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
                 <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
                 {% for category in site.categories %}
-                {% if category[0] == "Flask" %}
-                <li><a href="/categories/flask" class="">Flask ({{category[1].size}})</a></li>
+                {% if category[0] == "Back-End" %}
+                <li><a href="/categories/backend" class="">Back-End ({{category[1].size}})</a></li>
                 {% endif %}
                 {% endfor %}
             </ul>
-
-            <span class="nav__sub-title">Front-End</span>
-            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
             <ul>
                 <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
                 <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
@@ -114,11 +153,10 @@
                 {% endfor %}
             </ul>
 
-            
 
-        
 
             <!--ETC-->
+            
             <span class="nav__sub-title">ETC</span>
             <ul>
                 <!--ETC-->
