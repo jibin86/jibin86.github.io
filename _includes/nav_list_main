@@ -59,15 +59,29 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                {% if category[0] == "Machine Learning" %}
-                <li><a href="/categories/ml" class="">Machine Learning ({{category[1].size}})</a></li>
+                {% if category[0] == "Hands-On ML" %}
+                <li><a href="/categories/hands_on_ml" class="">Hands-On ML ({{category[1].size}})</a></li>
                 {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
-                {% if category[0] == "Deep Learning" %}
-                <li><a href="/categories/dl" class="">Deep Learning ({{category[1].size}})</a></li>
+                {% if category[0] == "Kaggle" %}
+                <li><a href="/categories/kaggle" class="">Kaggle ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                {% if category[0] == "ML (Others)" %}
+                <li><a href="/categories/ml" class="">ML (Others) ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                {% if category[0] == "DL (Others)" %}
+                <li><a href="/categories/dl" class="">DL (Others) ({{category[1].size}})</a></li>
                 {% endif %}
                 {% endfor %}
             </ul>

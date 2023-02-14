@@ -1,7 +1,7 @@
 ---
 title:  "[데이터 전처리] End-to-End Data Mining"
 categories: [Data handling]
-tags: [Normalization,Standardization, encoding, PCA, LDA]
+tags: [전처리, Normalization,Standardization, encoding, PCA, LDA]
 ---
 
 전 포스팅에서 데이터 전처리하는 법을 복습하였다. 사이킷런의 와인 데이터를 가지고 end-to-end 실습해보자

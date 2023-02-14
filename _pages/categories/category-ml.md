@@ -1,5 +1,5 @@
 ---
-title: "Machine Learning"
+title: "ML (Others)"
 layout: archive
 permalink: categories/ml
 author_profile: true
@@ -7,5 +7,5 @@ sidebar_main: true
 ---
 
 
-{% assign posts = site.categories["Machine Learning"] %}
+{% assign posts = site.categories.["ML (Others)"] %}
 {% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}
