@@ -1,12 +1,11 @@
 ---
-title:  "[Amazon] AWS Deepracer (1) AWS Deepracer Overview"
+title:  "[Amazon] AWS Deepracer(1) - AWS Deepracer Overview"
 categories: [AI Tech, Reinforcement Learning]
 tags: [Deepracer]
 ---
 
 이 포스트는 [AWS Deepracer 강의](https://dongorae.github.io/aws-deepracer-school/Basic/AWS_Deepracer_Overview/09_Deepracer_%EC%BD%98%EC%86%94_%EB%91%98%EB%9F%AC%EB%B3%B4%EA%B8%B0.html)를 바탕으로 공부한 내용을 정리하였습니다.
 
-<br>
 
 # 1. DeepRacer란
 
@@ -28,12 +27,12 @@ tags: [Deepracer]
 
 # 2. 클라우드 컴퓨팅과 AWS
 
-### 클라우드 컴퓨팅이란
+## 클라우드 컴퓨팅이란
 
 - 인터넷을 사용해서 공유자원(서버, 네트워크, 스토리지)을 사용할 수 있는 서비스이다.
 - IT에 관련한 물리적 자원 및 기술적 자원을 임대하고 사용한 만큼 금액을 지불한다.
 
-### On Premise vs On Demand
+## On Premise vs On Demand
 
 - On-Premise: 서버, 데이터베이스, 네트워크 장비 등을 모두 구매해서 구축하고 운영하는 모델
 - On-Demand: 클라우드 컴퓨티 서비스 사용자가 요청한 만큼 서비스를 제공하고 비용을 청구하는 모델
