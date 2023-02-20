@@ -233,6 +233,10 @@ plugins:
   - jekyll-feed
   - jekyll-include-cache
 
+sitemap :
+  changefreq : daily
+  priority : 1.0
+
 # mimic GitHub Pages with --safe
 whitelist:
   - jekyll-paginate

@@ -1,5 +1,5 @@
 ---
-title:  "[Project] Politics News Portal UI 제작"
+title:  "[Solux] Politics News Portal UI 제작"
 # excerpt: "프로젝트 '정치적 편향도를 제공하는 뉴스 포털' 제작 과정을 담아보았다."
 categories: [Web, Front-End, Project]
 tags: [HTML, Bootstrap, Project]
