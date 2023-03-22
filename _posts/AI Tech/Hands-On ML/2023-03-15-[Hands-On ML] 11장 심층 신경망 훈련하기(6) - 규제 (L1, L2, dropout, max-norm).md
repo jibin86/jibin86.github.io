@@ -3,8 +3,6 @@ title:  "[Hands-On ML] 11장 심층 신경망 훈련하기(6) - 규제 (L1, L2, 
 categories: [AI Tech, Hands-On ML]
 tags: [Hands-On ML, 규제]
 ---
-<br>
-
 # 11.4 규제를 사용해 과대적합 피하기  
 
 지금까지 규제 방법 중 하나인 조기 종료, 배치 정규화 등을 배웠다.  
