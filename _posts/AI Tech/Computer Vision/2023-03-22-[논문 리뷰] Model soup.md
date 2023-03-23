@@ -27,7 +27,7 @@ fine-tuning된 모델의 parameter를 평균낸 single model 방식을 제안하
 
 ### Stochastic Weight Averaging(2018)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a657360d-0003-4760-8828-8ce79027ef73/Untitled.png)
+![image](https://user-images.githubusercontent.com/89712324/227086423-6b995220-c52c-4259-84aa-c1bcf95147a9.png){: width="300"}
 
 Stochastic Weight Averaging(2018) 연구를 살펴보면 서로 다른 하이퍼파라미터로 학습한 모델들의 weight들을 평균 내면, 이는 loss landscape에서 가장 낮은 값을 갖는 값으로 향하며 더 좋은 성능을 낼 수 있다는 것을 알 수 있다.  
 <br>  
@@ -43,7 +43,7 @@ Neyshabur et al, 2021 연구에서는 같은 intialization에서 시작하여 �
 
 Wortsman et al.에서는 하나의 zero-shot CLIP 모델과 fine-tuning된 모델 사이의 Weight 평균을 내면 더 좋은 모델이 나올 수 있으며 Out-of-distribution 성능 향상도 된다는 결과를 보였다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/59c419d4-8b09-461a-b77a-517184f5f1b1/Untitled.png)
+![image](https://user-images.githubusercontent.com/89712324/227086445-0bc2c2c8-e475-4424-b138-4575f853503c.png)
 
 위 그림에서 별 모양 기호 θ0는 pretrained된 모델이며, 마름모와 정사각형, 원 기호는 서로 다른 하이퍼파라미터(learning_rate, seed)로 학습된 모델이다.
 
@@ -53,7 +53,7 @@ Wortsman et al.에서는 하나의 zero-shot CLIP 모델과 fine-tuning된 모�
 
 각도의 관점에서 Error landscape visualizations를 바라보자.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/59d1e140-553b-46bd-ab7a-48bbd1cff7b9/Untitled.png)
+![image](https://user-images.githubusercontent.com/89712324/227086470-a25a683c-46c9-43b5-b46c-1fb71ce0ab1a.png){: width="400"}
 
 하이퍼파라미터 seed와 learning_rate, augmentation을 다르게 학습한 두가지 모델의 사이의 각도를 측정한다. x축은 모델 간의 각도이며, y축은 Accuracy gain 이다 ⇒ (θ1과 θ2의 weight을 평균낸 성능) + (각θ1과 θ2의 성능을 평균낸 결과).
 
@@ -67,7 +67,7 @@ Wortsman et al.에서는 하나의 zero-shot CLIP 모델과 fine-tuning된 모�
 
 adaptive aggregation 학습을 통해 여러 pretrained model들을 하나의 single model로 만들어 transfer learning 성능을 개선하려고 노력하였다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4ed9a729-16dc-44f6-ab88-0d9259e7e593/Untitled.png)  
+![image](https://user-images.githubusercontent.com/89712324/227086488-190c2cba-a239-4e09-8ff8-e56d4eab2fa2.png){: width="600"}
 <br>  
 
 
@@ -87,7 +87,6 @@ Model soup을 만드는 3가지 방법이 있다.
 
 논문에서는 Greedy soup를 중점적으로 다뤘다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3be39e12-73ed-475b-a4af-57f74c8e3787/Untitled.png)  
 <br>  
 
 
@@ -99,7 +98,7 @@ Uniform soup은 단순하게 k개의 모델을 학습하고, 더해서 평균을
 
 ## Greedy soup
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/19e77c53-ab3d-47bb-a7c2-862cb587a03d/Untitled.png)
+![image](https://user-images.githubusercontent.com/89712324/227086696-fa8f353b-dc87-4fed-bbfd-34927f2d37fc.png){: width="400"}
 
 Greedy soup는 Uniform soup와 다른 방식으로 모델을 선별한다.
 
@@ -113,9 +112,7 @@ Learned soup은 Gradient 기반의 미니배치 최적화를 통해서 모델을
 <br>  
 
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f3d057c2-631a-415b-8f83-1f7ab3ab4c92/Untitled.png)
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4fa4f50f-567c-4c63-9d5d-947ec544635a/Untitled.png)
+![image](https://user-images.githubusercontent.com/89712324/227090033-aaa3e49f-21ce-420e-82ea-8fd635426723.png)
 
 위 Table을 통해서 논문에서 제시한 방식인 Soup: averaging weights of multiple fine-tuned models은 하나의 모델을 선정했을 때보다, 그리고 여러 모델을 ensemble했을 때보다 적은 cost으로 좋은 성능을 낼 수 있다는 것을 알 수 있다.  
 <br>  
@@ -145,13 +142,11 @@ ALIGN에서는 grid search를 통해 learning_rate, data augmentation, mixup 하
 
 앞서 Greedy Soup 방식을 정리했던 것처럼 모델들을 validation accuracy가 높은 순으로 정렬하고, 모델을 하나씩 추가하면서 accuracy가 떨어지지 않는 모델들을 선정한다. CLIP과 ALIGN 모두 5개의 모델을 선정하였다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ca5fe957-0b29-4051-a7b8-4768c8ced5db/Untitled.png)
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/08b295b9-cb51-43cc-a7d7-69282748a63f/Untitled.png)
+![image](https://user-images.githubusercontent.com/89712324/227090100-2e11d22a-2d60-4056-ba8b-eb9d01436515.png)
 
 초록색 마름모 기호는 다양한 하이퍼파라미터로 개별적으로 학습한 모델의 accuracy를 나타내고, 보라색 별 모양 기호는 Greedy Soup의 accuracy를 나타낸다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/963e9f1f-e8c4-4963-b123-dea03f75fc8f/Untitled.png)
+![image](https://user-images.githubusercontent.com/89712324/227086991-aa29a081-52c5-42f1-a582-cef0c89d358e.png){: width="400"}
 
 위 결과를 통해 ImageNet과 the out-of-distribution에서 Greedy Soup 방식으로 학습한 모델이, 개별 모델 중 성능이 가장 높은 모델보다 더 좋은 성능을 나타낸다는 것을 알 수 있다.  
 <br>  
@@ -161,7 +156,7 @@ ALIGN에서는 grid search를 통해 learning_rate, data augmentation, mixup 하
 
 JFT-3B에서는 learning_rate, decay schedule, loss function, minimum crop size 등 다양한 하이퍼파라미터를 설정하여 총 58개의 fine-tuned models를 얻었다. 그 중 Greedy soup에서 14개의 모델 선정하였다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/53857a6a-3146-4946-832b-0d050fa970d6/Untitled.png)
+![image](https://user-images.githubusercontent.com/89712324/227087030-bcfa96d9-05a3-4314-90ad-1fbb513c0e98.png)
 
 ImageNet, Distribution shifts 데이터셋으로 성능을 측정하였을 때, ObjectNet을 제외한 모든 데이터셋에서 Greedy soup와 best individually fine-tuned model이 통계적으로 유의미한 성능 차이를 보인다는 것을 알 수 있었다. 즉, 대부분의 데이터셋에서 Greedy soup이 좋은 성능을 낸다는 것을 알 수 있다.  
 <br>  
@@ -169,7 +164,7 @@ ImageNet, Distribution shifts 데이터셋으로 성능을 측정하였을 때, 
 
 ## 3. Fine-tuning Text Classification
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8c01f952-68f6-44f2-8e30-52a07476fce4/Untitled.png)
+![image](https://user-images.githubusercontent.com/89712324/227087084-9fd2c000-f6d4-4468-a6fd-e8a2ee8e9c1f.png)
 
 Pretrained BERT와 T5 모델을 MRPC, RTE, CoLA, SST-2, 총 4가지 task에 대해서 fine-tuning을 하였다. 두 모델과 각각의 Task에서 Greedy soup이 Best individual model보다 높은 성능을 가진다는 것을 알 수 있었다.  
 <br>  
