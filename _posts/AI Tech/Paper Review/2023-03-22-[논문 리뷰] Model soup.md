@@ -190,6 +190,6 @@ Ensembles 모델은 각 모델의 결과를 앙상블하기 때문에 모델의 
 <br>  
 
 
-# Conclutions
+# Conclusions
 
 Soup 모델은 fine-tuning 모델을 선정하는 방식에 Inference 동안에 추가적인 compute cost 없이, averaging weights하는 새로운 방식을 제시하였다.
