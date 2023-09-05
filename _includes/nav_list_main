@@ -23,6 +23,13 @@
             <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
             <ul>
                 {% for category in site.categories %}
+                {% if category[0] == "Paper Review" %}
+                <li><a href="/categories/ai_tech/paper_review" class="">Paper Review ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
                 {% if category[0] == "Computer Vision" %}
                 <li><a href="/categories/ai_tech/cv" class="">Computer Vision ({{category[1].size}})</a></li>
                 {% endif %}
@@ -67,13 +74,6 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                {% if category[0] == "Paper Review" %}
-                <li><a href="/categories/ai_tech/paper_review" class="">Paper Review ({{category[1].size}})</a></li>
-                {% endif %}
-                {% endfor %}
-            </ul>
-            <ul>
-                {% for category in site.categories %}
                 {% if category[0] == "ML (Others)" %}
                 <li><a href="/categories/ai_tech/ml" class="">ML (Others) ({{category[1].size}})</a></li>
                 {% endif %}
@@ -96,7 +96,7 @@
             <ul>
                 {% for category in site.categories %}
                 {% if category[0] == "Research & Development Log" %}
-                <li><a href="/categories/my_log/research_development_Log" class="">Research & Development Log ({{category[1].size}})</a></li>
+                <li><a href="/categories/my_log/research_development_log" class="">Research & Development Log ({{category[1].size}})</a></li>
                 {% endif %}
                 {% endfor %}
             </ul>
