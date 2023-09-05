@@ -302,5 +302,6 @@ defaults:
       toc: true # 포스트의 헤더들만 보여주는 목차 
       toc_sticky: true  # 목차가 스크롤을 따라 움직이게 된다
       toc_label: 목차
+      use_math: true
 
 date_format: "%Y-%m-%d"

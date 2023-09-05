@@ -87,6 +87,19 @@
                 {% endfor %}
             </ul>
 
+            <!--My Log-->
+            {% for category in site.categories %}
+            {% if category[0] == "My Log" %}
+            <span class="nav__sub-title"><a href="/categories/my_log" class="">My Log ({{category[1].size}})</a></span>
+            {% endif %}
+            {% endfor %}
+            <ul>
+                {% for category in site.categories %}
+                {% if category[0] == "Research & Development Log" %}
+                <li><a href="/categories/my_log/research_development_Log" class="">Research & Development Log ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
 
             <!--Data Engineering-->
             {% for category in site.categories %}
