@@ -13,15 +13,15 @@ typora-root-url: ../
 
 Stable Diffusion에 들어가기 앞서 사전지식을 정리해보자.
 
-## Background
+# Background
 
-<aside> ❓ **Latent Space란?**
+## ❓ Latent Space란?
 
 autoencoder 같은 모델에서 **고차원의 입력데이터를 저차원으로 투영**하는데 이 과정에서 모델은 데이터의 **중요한 특성**을 뽑아내고, 이 특성들의 **분포 공간을 latent space**라고 한다.
 
-</aside>
 
-<aside> ❓ **Autoencoder란?**
+
+## ❓ Autoencoder란?
 
 이미지를 latent space으로 차원 축소할때 Autoencoder기법을 사용한다. 인코더 디코더로 이루어져 있으며 **인코더에서는 이미지를 낮은 차원(latent space)으로 압축**하며 **디코더는 latent space로부터 이미지를 복원**하는 역할을 한다.
 
@@ -33,9 +33,8 @@ autoencoder 같은 모델에서 **고차원의 입력데이터를 저차원으�
 
   ![Untitled](/../../images/2023-07-17-[논문 리뷰] High-Resolution Image Synthesis with Latent Diffusion Models (LDMs)/Untitled 1.png)
 
-</aside>
+## ❓cross-attention이란?
 
-<aside> ❓ **cross-attention이란?**
 
 ![Untitled](/../../images/2023-07-17-[논문 리뷰] High-Resolution Image Synthesis with Latent Diffusion Models (LDMs)/Untitled 2.png)
 
@@ -43,15 +42,11 @@ autoencoder 같은 모델에서 **고차원의 입력데이터를 저차원으�
 
 하지만 **cross attention**은 왼쪽 그림과 같이 두개의 서로 다른 시퀀스 간에 정보를 교환한다. **cross attention**을 통해 서로 다른 시퀀스(모달)을 이해할 수 있다.
 
-</aside>
 
-### Diffusion model
 
-- 이미지를 
+## Diffusion model
 
-  확률적으로
-
-   복원하는 모델 중 하나이다.
+- 이미지를 확률적으로  복원하는 모델 중 하나이다.
 
   - 이미지에 가우시안 노이즈를 섞어 빽빽한 노이즈로 만든 다음에, 그 노이즈를 다시 제거하며 원본 이미지로 복원해나가는 모델이다.
 
@@ -65,12 +60,9 @@ autoencoder 같은 모델에서 **고차원의 입력데이터를 저차원으�
 
   ![Untitled](/../../images/2023-07-17-[논문 리뷰] High-Resolution Image Synthesis with Latent Diffusion Models (LDMs)/Untitled 1-1702524721249-164.png)
 
-### S**table diffusion (Latent Diffusion Model)**
+## S**table diffusion (Latent Diffusion Model)**
 
-<aside> 💡 **stable diffusion은 Autoencoder와 diffusion model을 섞었다고 볼 수 있음!**
-
-</aside>
-
+💡 stable diffusion은 Autoencoder와 diffusion model을 섞었다고 볼 수 있음!
 ![K-063.jpg](/../../images/2023-07-17-[논문 리뷰] High-Resolution Image Synthesis with Latent Diffusion Models (LDMs)/K-063.jpg)
 
 1. input값을 encoder에 넣고 latent variable을 만들어 낸다.

@@ -6,7 +6,8 @@ typora-root-url: ../
 ---
 
 ![Untitled](https://i.ibb.co/m6SMh62/Untitled.png)
-이번 포스트에는 Text-to-Image 생성 모델 중 하나인 Text Inversion 모델을 다뤄보도록 할 것이다.  
+
+이번 포스트에는 Text-to-Image 생성 모델 중 하나인 Text Inversion 모델을 다뤄보도록 할 것이다. 
 Text Inversion은 기존에 학습된 데이터만 사용하여 이미지를 생성하는 것이 아닌, 커스터마이즈된 이미지를 생성하는 모델이다.
 
 # 1. Abstract

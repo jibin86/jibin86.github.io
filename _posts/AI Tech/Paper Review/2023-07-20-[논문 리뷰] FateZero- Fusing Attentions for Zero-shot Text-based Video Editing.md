@@ -104,20 +104,21 @@ typora-root-url: ../
 
 ### 3.1.1. Latent Diffusion Models (LDMs)
 
-![Untitled](/../../images/2023-07-20-[논문 리뷰] Fate_Zero- Fusing Attentions for Zero-shot Text-based Video Editing/Untitled.png)
+![Untitled](/../../images/2023-07-20-[논문 리뷰] Fate_Zero/Untitled.png)
 
 LDMs: Autoencoder의 latent 공간에서 노이징을 하고 디노이징하는 모델이다.
 
 1. **AutoEncoder**: encoder가 RGB 이미지를 저차원 잠재 공간으로 압축하고, decoder를 통해서 잠재 공간을 이미지로 복원할 수 있다.
+   
     - $z = E(x)$: 이미지 $x$를 오토인코더의 인코더를 거쳐 나온 값이다.
     - $D(z)$: 디코더를 통해 이미지를 복원한다.  
-
+    
     <br>
-
+    
 2. **U-Net**: cross-attention과 self-attention을 포함하고 있으며, 노이즈를 제거하도록(denoising) 훈련된다.
     - $ε_θ$: U-Net이다. 아래 목적 함수를 통해 노이즈를 제거한다.
       
-        ![Untitled 1](/../../images/2023-07-20-[논문 리뷰] Fate_Zero- Fusing Attentions for Zero-shot Text-based Video Editing/Untitled 1.png)
+        ![Untitled 1](/../../images/2023-07-20-[논문 리뷰] Fate_Zero/Untitled 1.png)
 
     - $p$는 텍스트 프롬프트의 임베딩이다.
     - $z_t$는 $z_0$에 t번의 step을 거쳐 노이즈를 추가한 것이다.
@@ -128,7 +129,7 @@ LDMs: Autoencoder의 latent 공간에서 노이징을 하고 디노이징하는 
 
 사전학습된 text-to-image 모델 중 하나인 Stable Diffusion을 베이스 모델로 사용하였다.
 
-![Untitled 2](/../../images/2023-07-20-[논문 리뷰] Fate_Zero- Fusing Attentions for Zero-shot Text-based Video Editing/Untitled 2.png)
+![Untitled 2](/../../images/2023-07-20-[논문 리뷰] Fate_Zero/Untitled 2.png)
 
 ### 3.2.1. Structure
 
@@ -160,23 +161,24 @@ inverted latents인 $z_T$에서 바로 editing하는 것은 Frame inconsistency�
 - 위의 두 가지 문제를 해결하기 위해서 noising 과정에 attention maps를 도입했다.
     - noising 과정에서 U-Net에 z_0와 source prompt를 입력으로 넣는다. **매 noising step마다 self-attention maps, cross-attention maps를 저장**한다.
     - 총 T개의 intermediate self-attention maps와 cross-attention maps 그리고 최종 latent feature map인 z_T를 저장한다.          
-        ![Untitled 3](/../../images/2023-07-20-[논문 리뷰] Fate_Zero- Fusing Attentions for Zero-shot Text-based Video Editing/Untitled 3.png)          
+        ![Untitled 3](/../../images/2023-07-20-[논문 리뷰] Fate_Zero/Untitled 3.png)          
         - DDIM의 noising 과정              
-            ![Untitled 4](/../../images/2023-07-20-[논문 리뷰] Fate_Zero- Fusing Attentions for Zero-shot Text-based Video Editing/Untitled 4.png)
+            ![Untitled 4](/../../images/2023-07-20-[논문 리뷰] Fate_Zero/Untitled 4.png)
 
 <br>            
         
+
 - denoising(editing) 과정에서는      
-    ![Untitled 5](/../../images/2023-07-20-[논문 리뷰] Fate_Zero- Fusing Attentions for Zero-shot Text-based Video Editing/Untitled 5.png)  
+    ![Untitled 5](/../../images/2023-07-20-[논문 리뷰] Fate_Zero/Untitled 5.png)  
     - attention-fusion에 수정할 필요가 없는 부분의 cross-attention maps을 넣었다.
     - editing하는 도중에 원본의 구조와 모션이 유지될 수 있도록 한다.
     - DDIM의 denoising 과정:          
-        ![Untitled 6](/../../images/2023-07-20-[논문 리뷰] Fate_Zero- Fusing Attentions for Zero-shot Text-based Video Editing/Untitled 6.png)
+        ![Untitled 6](/../../images/2023-07-20-[논문 리뷰] Fate_Zero/Untitled 6.png)
 
 <br>        
 
 - noising 과정에서 cross-attention map은 (a)와 (b)에서 큰 차이가 발생하지 않았다. 하지만 reconstruction 과정에서 큰 차이가 발생했다.  
-  ![Untitled 7](/../../images/2023-07-20-[논문 리뷰] Fate_Zero- Fusing Attentions for Zero-shot Text-based Video Editing/Untitled 7.png)  
+  ![Untitled 7](/../../images/2023-07-20-[논문 리뷰] Fate_Zero/Untitled 7.png)  
 - 왜 reconstruction에서 attention을 준 것보다 noising 과정에서 attention을 준 것이 consistency를 유지할 수 있을까? ⇒ 원본 구조를 더 잘 유지할 수 있기 때문일까?
 - spatial-temporal self-attention maps이 프레임간의 유사성을 표현한다.
 
@@ -184,13 +186,13 @@ inverted latents인 $z_T$에서 바로 editing하는 것은 Frame inconsistency�
 
 ### 3.2.3. Attention Map Blending
 
-![Untitled 9](/../../images/2023-07-20-[논문 리뷰] Fate_Zero- Fusing Attentions for Zero-shot Text-based Video Editing/Untitled 9.png)  
+![Untitled 9](/../../images/2023-07-20-[논문 리뷰] Fate_Zero/Untitled 9.png)  
 - noising 과정에서  cross-attention map을 사용하여 수정이 필요한 부분을 1로 두는 binary mask M_t를 얻는다. 수정이 필요하지 않은 부분은 1-M_t이다.
 - binary mask M_t를 통해서 $s_t^{src}$와 $s_t^{edit}$를 융합한다. ⇒ $s_t^{fused}$  
 
 <br>
 
-![Untitled 8](/../../images/2023-07-20-[논문 리뷰] Fate_Zero- Fusing Attentions for Zero-shot Text-based Video Editing/Untitled 8.png)  
+![Untitled 8](/../../images/2023-07-20-[논문 리뷰] Fate_Zero/Untitled 8.png)  
 - 4번째, 5번째 열은 원본 이미지의 구조 또는 배경을 유지하지 못했다.
 - 반면 2번째 열의 cross-attention을 사용해서 self-attention을 blending한 것은 원본 이미지의 구조와 배경을 유지한 채로 edit 되었다.
 
