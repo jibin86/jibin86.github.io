@@ -2,7 +2,7 @@
 title:  "[논문 정리] CoDeF: Content Deformation Fields for Temporally Consistent Video Processing"
 categories: [AI Tech, Computer Vision, Paper Review]
 tags: [diffusion]
----   
+---
 
 [https://arxiv.org/pdf/2308.07926.pdf](https://arxiv.org/pdf/2308.07926.pdf)
 
@@ -71,14 +71,14 @@ tags: [diffusion]
                 - **multi-resolution**: 하나의 프레임을 원본 해상도와 줄인 해상도 두 가지로 동시에 표현하는 것
                 - **Hash Encoding** (해시 인코딩): 데이터를 고정된 길이의 해시로 변환하는 것
                 - 즉, temporal deformation에 대한 데이터(x, y, t)를 다중 해상도로 표현하고, 
-                표현된 각 해상도에 해시 인코딩을 적용하여 비디오의 움직임과 변형을 표현할 수 있도록 하였다.
-                ⇒ 물, 기체와 같은 non-rigid 물체들의 변형도 감지할 수도 있다.                      
+                  표현된 각 해상도에 해시 인코딩을 적용하여 비디오의 움직임과 변형을 표현할 수 있도록 하였다.
+                  ⇒ 물, 기체와 같은 non-rigid 물체들의 변형도 감지할 수도 있다.                      
                     ![Untitled](https://i.ibb.co/JvWWKD4/Untitled-1.png)
 
         <br>
-                    
+        
     - deformation field의 능력이 너무 올라가면, 자연스러운 canonical image를 예측하기 어려울 수 있다.
-    따라서 Training 하는 동안 annealed hash을 적용한다.
+      따라서 Training 하는 동안 annealed hash을 적용한다.
         - ⇒ coarse-to-fine training 기법: 처음에는 smooth deformation grid로 모든 rigid motions을 식별하고, 이후에 세부 디테일을 점진적으로 추가한다.
         - 이렇게 하므로써 canonical image의 자연스러움은 유지하고, 재구성(reconstruction)의 정확도(faithfulness)도 유지할 수 있다.
 
@@ -142,6 +142,7 @@ tags: [diffusion]
     - layered representation-based techniques과 CoDeF 비교          
         ![Untitled](https://i.ibb.co/dLRgHfv/Untitled-2.png)
         
+
 <br>
 
 ## 3.3. Video Processing via Generative Models.
@@ -198,6 +199,7 @@ tags: [diffusion]
     
     ![Untitled](https://i.ibb.co/XJC9CDW/Untitled-3.png)
     
+
 <br>
 
 ### 4.2.1. 2D Hash Encoding for Canonical Field.
@@ -214,7 +216,7 @@ tags: [diffusion]
 
         - $F_l(x)$ : x → c
             - x를 $l$ 번째 resolution으로 표현한 features다.
-                
+              
                 ![Untitled](https://i.ibb.co/9hnyctD/Untitled-4.png)
                 
                 1. x ⇒ 2D position (x, y 좌표)
@@ -240,19 +242,20 @@ tags: [diffusion]
             - 3D hash encoding을 하여 비디오의  3차원 공간을 discrete한 $L$ 개의 multi-resolution feature grid로 표현한다.
                 - 아래 그림에서는 multi-resolution feature grid가 8개의 resolution으로 구성되었다.                      
                     ![Untitled](https://i.ibb.co/zPPgxHT/Untitled-7.png)
-                    
+                
             - 아래 수식은 $l$ 번째 layer의 resolution $N_l$ 을 나타내는 수식이다.                  
                 ![Untitled](https://i.ibb.co/rGhc1JJ/Untitled-8.png)
-                
                 - $[N_{min}, N_{max}]$: coarsest and finest resolutions을 나타낸다.
-                    
+                  
+        
         <br>
-
+        
     2. 그 다음 인코딩된 features는 아주 작은 MLP를 통해 canonical field에 해당하는 좌표 $x$’로 변환된다.
         - MLP $D : (γ_{3D}(x, t)) → x$′
-            
+          
             ![Untitled](https://i.ibb.co/9Tjbj1v/Untitled-9.png)
             
+
 <br>
 
 ### 4.2.3. 최종 결과:
@@ -270,6 +273,7 @@ tags: [diffusion]
     - 2D 좌표(x’, y’)를 세밀한 정보도 캐치할 수 있도록 multi-resolution hash encoding한 feature 만들고, MLP를 거쳐 RGB 공간의 이미지를 반환한다.      
         ![Untitled](https://i.ibb.co/MnQGk46/Untitled-12.png)
     
+
 <br>
 
 ## 4.3. Model Design
@@ -281,8 +285,9 @@ tags: [diffusion]
     - annealed hash 적용 전과 후의 모습          
         ![Untitled](https://i.ibb.co/rfYG0Lm/Untitled-13.png)
         
+    
     <br>
-
+    
 2. Flow-guided Consistency Loss 도입
     - smoothness of deformation를 더욱 강화하기 위해서, **flow-based consistency**를 도입하였다.
     - 목적: 흐름(flow) 상에서 일치하는 좌표(point)들은 canonical field의 같은 좌표에 존재하도록 한다.

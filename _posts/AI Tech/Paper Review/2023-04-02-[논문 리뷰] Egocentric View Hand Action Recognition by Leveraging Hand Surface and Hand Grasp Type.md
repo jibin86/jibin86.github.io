@@ -2,7 +2,8 @@
 title:  "[논문 리뷰] Egocentric View Hand Action Recognition by Leveraging Hand Surface and Hand Grasp Type"
 categories: [AI Tech, Computer Vision, Paper Review]
 tags: [hand]
----   
+typora-root-url: ../
+---
 
 오늘은 hand action recognition을 위해서 Hand Grasp Type을 사용하는 논문을 읽어볼 것이다.
 
@@ -18,7 +19,7 @@ tags: [hand]
 
 ### 1.1.1. hand action recognition에서의 grasp type & hand Surfaces 필요성
 
-![Untitled](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/d8a54096-508d-493b-bbc6-bb6e19b73889)
+![Untitled](/../../images/2023-04-02-[논문 리뷰] Egocentric View Hand Action Recognition by Leveraging Hand Surface and Hand Grasp Type/Untitled.png)
 
 손 제스처와 다르게 손 동작은 객체와 상호작용하므로 객체를 포함한 grasp type을 이해해야하며, 손 동작에 따라 손 표면도 달라지므로 hand surface 또한 고려해야한다. 따라서 객체와 상호작용하는 손 동작 인식을 위해 grasp type과 hand surface가 중요하다는 것을 알 수 있다.
 
@@ -105,7 +106,7 @@ grasp type은 손과 관련된 작업을 할 때, 사람의 의도를 표현한�
 
 ## 3.1. Hand and Object Detection
 
-![Untitled 1](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/e4feeb0d-0cee-44ee-8a8e-dacf9623c91c)
+![Untitled 1](/../../images/2023-04-02-[논문 리뷰] Egocentric View Hand Action Recognition by Leveraging Hand Surface and Hand Grasp Type/Untitled 1.png)
 
 Object Detection Network를 통해 Input Frame에 존재하는 primary hand(오른손으로 설정)와 target object를 인식한다. 
 object detection을 하기 위해서는 primary hand와 target object에 대한 라벨링을 하며, 라벨링된 데이터로 object detection network를 개선한다.
@@ -114,7 +115,7 @@ object detection을 하기 위해서는 primary hand와 target object에 대한 
 
 Object detector로는 YOLOv4를 사용하였고, depth와 width를 다르게하여 아래 세 모델을 사용하였다. 
 
-![Untitled 2](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/1c3b28c6-1e8e-45e3-9250-b2aa67488de6){: width="400"}
+![Untitled 2](/../../images/2023-04-02-[논문 리뷰] Egocentric View Hand Action Recognition by Leveraging Hand Surface and Hand Grasp Type/Untitled 2.png){: width="400"}
 
 <br>
 
@@ -123,8 +124,8 @@ Object detector로는 YOLOv4를 사용하였고, depth와 width를 다르게하�
 Local Network는 다음과 같이 2개의 네트워크로 구성되며  pre-trained ResNet34을 backbone으로 사용하였다.
 
 1. Hand grasp type estimator
-    
-    ![Untitled 3](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/331b84ad-56e2-4110-9e15-5ae42f8660df)
+   
+    ![Untitled 3](/../../images/2023-04-02-[논문 리뷰] Egocentric View Hand Action Recognition by Leveraging Hand Surface and Hand Grasp Type/Untitled 3.png)
     
     - grasp type의 taxonomy을 통해 손이 물체에 가려지는 문제를 해결한다.
     - hand type의 taxonomy는 물체를 쥐고 있는 손과 물체를 쥐고 있지 않는 손 모두를 포함한다.
@@ -133,7 +134,7 @@ Local Network는 다음과 같이 2개의 네트워크로 구성되며  pre-trai
     - hand의 세밀한 변화를 담기 위해 Mean curvature가 사용되며, 이는 손의 local surface를 표현할 수 있고, 또한 손 부분을 통해서 측정하므로 global position이 변하여도 측정 결과는 변하지 않는다.
     - hand Grasp Type의 중간 벡터를  concatenate하여 mean curvature를 계산한다.
     - MANO hand mesh model을 사용하여 각각의 tervex의 mean curvature을 계산하였다.
-    ![Untitled 4](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/368bb4a3-44f8-4f48-8cf9-f20819e43f74){: width="400"}
+    ![Untitled 4](/../../images/2023-04-02-[논문 리뷰] Egocentric View Hand Action Recognition by Leveraging Hand Surface and Hand Grasp Type/Untitled 4.png){: width="400"}
 
 두 estimator는 hand cropped image를 사용하며 동시에 계산 가능하다. 
 
@@ -141,7 +142,7 @@ Local Network는 다음과 같이 2개의 네트워크로 구성되며  pre-trai
 
 ## 3.3. Frame Embedding and Temporal Model
 
-![Untitled 1](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/62cf4ef0-3e07-4862-95e0-bc41dbb4953c)
+![Untitled 1](/../../images/2023-04-02-[논문 리뷰] Egocentric View Hand Action Recognition by Leveraging Hand Surface and Hand Grasp Type/Untitled 1-1702525174914-220.png)
 
 ### 3.3.1. Frame embedding generator
 
@@ -161,7 +162,7 @@ Frame embedding generator는 다음과 같이 4개의 네트워크로 구성되�
 
 ### 3.3.2. Temporal model for action recognition
 
-![Untitled 5](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/416f25a5-24ca-4dee-b51b-e34c16ef5f90)
+![Untitled 5](/../../images/2023-04-02-[논문 리뷰] Egocentric View Hand Action Recognition by Leveraging Hand Surface and Hand Grasp Type/Untitled 5.png)
 
 Hand action은 정적인 상태가 아니라 연속적인 상태이므로 temporal information을 인코딩할 필요가 있다.
 
@@ -178,30 +179,30 @@ Hand action의 temporal relation을 담기 위해 양방향의 GRU(Gated Recurre
 ### 3.4.1. Frame embeding generator
 
 1. **object detection network**
-    
+   
     object detection은 별도로 YOLOv4의 loss function으로 훈련한다.
     
 2. **local network**
-    
+   
     local network는 아래의 loss function으로 최적화한다.      
-    ![Untitled 6](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/5124a151-b2a7-437e-ad80-472ea7705597){: width="300"}
+    ![Untitled 6](/../../images/2023-04-02-[논문 리뷰] Egocentric View Hand Action Recognition by Leveraging Hand Surface and Hand Grasp Type/Untitled 6.png){: width="300"}
     
 3. **object network**
-    
+   
     object network는 아래의 loss function으로 최적화한다.      
-    ![Untitled 7](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/0ea58894-b728-4291-b115-0f305b0d3d7d){: width="200"}
+    ![Untitled 7](/../../images/2023-04-02-[논문 리뷰] Egocentric View Hand Action Recognition by Leveraging Hand Surface and Hand Grasp Type/Untitled 7.png){: width="200"}
     
 4. **mixture network**
-    
+   
     위 3개의 network을 최적화한 다음, mixture network를 아래의 loss function으로 최적화한다.   
-    ![Untitled 8](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/48855201-77f6-44d9-b484-1f04599712c3){: width="300"}
+    ![Untitled 8](/../../images/2023-04-02-[논문 리뷰] Egocentric View Hand Action Recognition by Leveraging Hand Surface and Hand Grasp Type/Untitled 8.png){: width="300"}
 
 <br>
 
 ### 3.4.2. Temporal model
 
 Frame embedding generator를 최적화한 뒤, network의 파라미터를 freeze한 후에, 아래의 loss function으로 최적화한다.  
-![Untitled 9](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/36132b10-26c7-4e0a-8d7a-6833a1a97319){: width="200"}
+![Untitled 9](/../../images/2023-04-02-[논문 리뷰] Egocentric View Hand Action Recognition by Leveraging Hand Surface and Hand Grasp Type/Untitled 9.png){: width="200"}
 
 <br>
 
@@ -217,7 +218,7 @@ FPHA의 작은 버전인 TinyFPHA은 10개의 action을 담고 있다.
 
 수작업으로 비디오의 각 프레임에 hand action에 대한 주석을 달았다.
 
-![Untitled 10](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/314a6384-dc09-4876-ac48-d03640ae3e4d)
+![Untitled 10](/../../images/2023-04-02-[논문 리뷰] Egocentric View Hand Action Recognition by Leveraging Hand Surface and Hand Grasp Type/Untitled 10.png)
 
 위 그래프를 통해, 한 가지 action에 대해서 여러 hand type이 존재한다. 따라서 hand type만 보고 hand action을 예측하는 것은 바람직하지 않다는 것을 알 수 있다.
 
@@ -229,7 +230,7 @@ FPHA의 작은 버전인 TinyFPHA은 10개의 action을 담고 있다.
 
 object detection network에서 YOLOv4가 사용되었고, 모델을 평가 측도로는 mAP와 gIoU를 사용하였다. 성능 결과는 다음과 같다.
 
-![Untitled 11](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/e132443b-d8f7-452e-a3cf-510d77a4c983)
+![Untitled 11](/../../images/2023-04-02-[논문 리뷰] Egocentric View Hand Action Recognition by Leveraging Hand Surface and Hand Grasp Type/Untitled 11.png)
 
 object network에서는 pretrained ResNet18가 backbone으로 사용되었고, 36개의 fully-connected layer로 구성되었다. learning_rate는 0.0001, epoch는 30, batch size는 32로 설정하여 훈련하였다. Test set에서는 96.42%의 정확도를 달성하였다. local network와 Mixture network를 학습한 후에는 성능이 98.52%로 향상되었다.
 
@@ -237,21 +238,22 @@ object network에서는 pretrained ResNet18가 backbone으로 사용되었고, 3
 
 ### 4.2.2. Ablation studies and implementation details
 
-![Untitled 12](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/905bf0d5-932f-4b13-aa42-b1f0c24755cb){: width="300"}
+![Untitled 12](/../../images/2023-04-02-[논문 리뷰] Egocentric View Hand Action Recognition by Leveraging Hand Surface and Hand Grasp Type/Untitled 12.png){: width="300"}
 
 - **hand grasp type**
-    
+  
     ResNet18로 hand grasp type classification 진행하였고 97.32%의 정확도를 달성하였다. hand action의 정확도보다 낮은데, hand grasp type이 long tail 분포를 가지기 때문이다.
     
 - **hand curvature**
-    
+  
     hand grasp type의 embedding 벡터와 concatenate하여 hand curvature를 예측한 결과, L2 loss가 3.238이 나왔다.
     
+
 <br>
 
 ### 4.2.3. Comparison with other methods
 
-![Untitled 13](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/94d1087d-c899-48f2-af86-deba85ef4bcb){: width="500"}
+![Untitled 13](/../../images/2023-04-02-[논문 리뷰] Egocentric View Hand Action Recognition by Leveraging Hand Surface and Hand Grasp Type/Untitled 13.png){: width="500"}
 
 OP: 6D Object Pose
 

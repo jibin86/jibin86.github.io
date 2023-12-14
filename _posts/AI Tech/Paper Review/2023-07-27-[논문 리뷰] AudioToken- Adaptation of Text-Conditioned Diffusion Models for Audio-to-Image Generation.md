@@ -2,7 +2,8 @@
 title:  "[논문 리뷰] AudioToken: Adaptation of Text-Conditioned Diffusion Models for Audio-to-Image Generation"
 categories: [AI Tech, Computer Vision, Paper Review]
 tags: [diffusion]
----   
+typora-root-url: ../
+---
 
 이 논문은 Text를 조건으로한 Diffusion 모델을 Audio-to-Image generation으로 변화시킨 논문이다.
 
@@ -40,7 +41,7 @@ tags: [diffusion]
 
 ## 3.1. Input & Output
 
-![Untitled](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/3491e75b-8120-4abd-880f-dc370ce24834)
+![Untitled](/../../images/2023-07-27-[논문 리뷰] AudioToken- Adaptation of Text-Conditioned Diffusion Models for Audio-to-Image Generation/Untitled.png)
 
 1. “A photo of a”를 transformer 모델을 이용해서 text를 인코딩한다.
 2. $e_{text}$ 와 $e_{audio}$ 를 concat 한다.
@@ -49,6 +50,7 @@ tags: [diffusion]
         - $e_{audio}= Embedder(a)$  를 통해서 $e_{audio}$ 를 얻을 수 있다.
         - Embedder는 [Pre-trained Audio-Encoder] + [small projection network]로 구성되었다.
         
+
 <br>
 
 ## 3.2. **Embedder Network와 Optimization process**
@@ -57,7 +59,7 @@ tags: [diffusion]
 
 - Embedder 파라미터만 훈련되고 나머지는 freeze한다.
 
-![Untitled](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/3491e75b-8120-4abd-880f-dc370ce24834)
+![Untitled](/../../images/2023-07-27-[논문 리뷰] AudioToken- Adaptation of Text-Conditioned Diffusion Models for Audio-to-Image Generation/Untitled-1702524057518-131.png)
 
 - Pre-trained Audio-Encoder
     - A pre-trained text encoder extracts tokens created by a tokenizer and the audio token
@@ -69,13 +71,12 @@ tags: [diffusion]
         2. 그 결과 temporal embedding of the audio인 $φ(a) ∈ R^{\hat{d}×n_a}$ 가 도출된다.
             - $n_a$: temporal audio dimension
         3. 그 다음 temporal embedding of the audio인 $φ(a)$ 얘를 textual embedding 공간으로 projection하기 위해서 학습시킨다. 2개의 linear layer에 $φ(a)$ 를 집어넣는다.              
-            ![Untitled 1](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/59553e20-ca31-422e-b9de-1aeda3640551)
-            
+            ![Untitled 1](/../../images/2023-07-27-[논문 리뷰] AudioToken- Adaptation of Text-Conditioned Diffusion Models for Audio-to-Image Generation/Untitled 1.png)
             - $W_2 ∈ R^{\hat{d}× \hat{d}}$
             - $W_1 ∈ R^{\hat{d}× d_{audio}}$
             - σ: GELU activation function
         4. 마지막으로 attention-pooling을 넣어 temporal dimentsion을 축소시킨다.              
-            ![Untitled 2](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/007f7eb3-35ca-466c-92e5-e96ff6c83d71)
+            ![Untitled 2](/../../images/2023-07-27-[논문 리뷰] AudioToken- Adaptation of Text-Conditioned Diffusion Models for Audio-to-Image Generation/Untitled 2.png)
 
 <br>   
 
@@ -85,5 +86,5 @@ tags: [diffusion]
 - pre-trained audio network와 generative network는 frozen한다.
 - Loss function
     - Overall Loss Function          
-        ![Untitled 3](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/8640be94-a4f4-4c0a-95b6-57db5f657be7)          
-        ![Untitled 4](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/5346ad9d-72ae-4405-97ef-7aa1b2bf6e76)
+        ![Untitled 3](/../../images/2023-07-27-[논문 리뷰] AudioToken- Adaptation of Text-Conditioned Diffusion Models for Audio-to-Image Generation/Untitled 3.png)          
+        ![Untitled 4](/../../images/2023-07-27-[논문 리뷰] AudioToken- Adaptation of Text-Conditioned Diffusion Models for Audio-to-Image Generation/Untitled 4.png)

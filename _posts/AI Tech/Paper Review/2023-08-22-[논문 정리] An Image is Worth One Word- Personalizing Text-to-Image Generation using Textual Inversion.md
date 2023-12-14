@@ -2,6 +2,7 @@
 title:  "[논문 정리] Text Inversion: An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion"
 categories: [AI Tech, Computer Vision, Paper Review]
 tags: [diffusion]
+typora-root-url: ../
 ---
 
 ![Untitled](https://i.ibb.co/m6SMh62/Untitled.png)
@@ -40,7 +41,7 @@ Text Inversion 모델을 사용하여 다음과 같은 문제를 해결하고자
 ## 2.2. Solution
 
 - pre-trained text-to-image models의 텍스트 임베딩 공간에서 새로운 “words”를 찾도록한다.
-    
+  
     ![Untitled](https://i.ibb.co/yhBxQkC/Untitled-1.png)
     
 - **STEP**
@@ -50,7 +51,7 @@ Text Inversion 모델을 사용하여 다음과 같은 문제를 해결하고자
         - a single conditioning code $c_θ(y)$
             - 생성 모델을 가이드하는 역할을 한다.
     4. reconstruction objective를 사용하여 embedding vector v∗를 pseudo-word S*에 맞도록 최적화시킨다.
-        
+       
         ![Untitled](https://i.ibb.co/jVttXx7/Untitled-2.png){: width="500"}
         
     

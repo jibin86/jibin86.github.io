@@ -2,11 +2,12 @@
 title:  "[논문 정리] Custom Diffusion: Multi-Concept Customization of Text-to-Image Diffusion"
 categories: [AI Tech, Computer Vision, Paper Review]
 tags: [diffusion]
----   
+typora-root-url: ../
+---
 
 [https://arxiv.org/pdf/2212.04488.pdf](https://arxiv.org/pdf/2212.04488.pdf)
 
-**Custom Diffusion의 구조를 파악하기 위해** Method 중심으로 **논문의 핵심 문장을 인용**하며 정리하였다.
+**Custom Diffusion의 구조를 빠르게 파악하기 위해** Method 중심으로 **논문의 핵심 문장을 인용**하며 정리하였다.
 
 # 1. **Custom Diffusion**
 
@@ -62,7 +63,7 @@ tags: [diffusion]
 
     - Train
         - The model learns the reverse process of a fixed-length (usually 1000) Markov chain.
-            
+          
             ![Untitled](https://i.ibb.co/hs1c02w/Untitled-2.png)
             
             - $ϵ_θ$ is the model prediction
@@ -79,7 +80,7 @@ tags: [diffusion]
 
 - fine-tuned model의 각 레이어에 대해서 파라미터 변화 살펴봄
     - we analyze the change in parameters for each layer in the fine-tuned model on the target dataset with the loss in Eqn. 2
-        
+      
         ![Untitled](https://i.ibb.co/hs1c02w/Untitled-2.png)
         
         ![Untitled](https://i.ibb.co/f2kmPYq/Untitled-3.png)
@@ -123,13 +124,14 @@ tags: [diffusion]
 
 - we propose to only update $W_k$ and $W_v$ parameters of the diffusion model during the fine-tuning process.
     - 이유: 텍스트가 들어갔을 때, 특정한 이미지가 나오도록 학습하는 것인데, 텍스트는 $W^k$ and $W^v$ 에만 관여하므로, $W^k$ and $W^v$ 만 학습해도 된다.
-        
+      
         (text features are only input to $W^k$ and $W^v$ projection matrix in the cross-attention block.)
         
         ![Untitled](https://i.ibb.co/3kkpFMR/Untitled-6.png)
         
         ![Untitled](https://i.ibb.co/r0v4jq2/Untitled-7.png)
         
+
 <br>
 
 ### 2.1.4. Text encoding.
@@ -146,7 +148,7 @@ tags: [diffusion]
 - Fine-Tuning 문제
     - Fine-tuning on the target concept and text caption pair can lead to **the issue of language drift.**
     - ex 1)  **training on “moongate”** will lead to the model **forgetting the association of “moon” and “gate”** with their previously trained visual concepts
-        
+      
         ![Untitled](https://i.ibb.co/NW5VGqC/Untitled-8.png)
         
     - ex 2) training on a personalized concept of **V∗ tortoise plushy** can leak, **causing all examples with plushy to produce the specific target images**
@@ -158,6 +160,7 @@ tags: [diffusion]
         - target text prompt와 데이터셋의 caption과의 유사도 threshold 0.85 넘는 것만 선정
         (above threshold 0.85 in CLIP text encoder feature space.)
     
+
 <br>
 
 ## 2.2. Multiple-Concept Compositional Fine-tuning
@@ -166,7 +169,7 @@ tags: [diffusion]
 
 - 학습 방법
     - we combine the training datasets for each individual concept and **train them jointly** with our method.
-        
+      
         ![Untitled](https://i.ibb.co/fqqG75k/Untitled-9.png)
         
     - $V^∗_i$ ($V^∗_1, V^∗_2, V^∗_3, ... )$ 를 학습하는 방법
@@ -180,9 +183,9 @@ tags: [diffusion]
 ### 2.2.2. Constrained optimization to merge concepts.
 
 - 이전까지 target 텍스트에 대한 K와 V를 업데이트 하는 법을 배웠다. 
-이 부분에서는 regulation 텍스트에 대한 K와 V를 일정하게 유지하도록 학습하는 법을 다룬다.      
+  이 부분에서는 regulation 텍스트에 대한 K와 V를 일정하게 유지하도록 학습하는 법을 다룬다.      
     ![Untitled](https://i.ibb.co/PtTX8GV/Untitled-10.png)
-    
+  
 - $\{W^k_{0,l}, W^v_{0,l}\}^L_{l=1}$ : the key and value matrices for all $L$ cross-attention layers in the **pretrained model**.
     - 간략화 ⇒ $W_{0}$  : key and value matrices of **pretrained model**  
 
@@ -214,6 +217,7 @@ tags: [diffusion]
 - 결과
     - This leads to faster convergence and improved results.
     
+
 <br>
 
 # 3. Results

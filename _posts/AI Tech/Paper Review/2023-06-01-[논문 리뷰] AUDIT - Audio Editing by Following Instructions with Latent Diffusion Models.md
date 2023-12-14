@@ -3,7 +3,8 @@ title:  "[논문 리뷰] AUDIT: Audio Editing by Following Instructions with
 Latent Diffusion Models"
 categories: [AI Tech, Computer Vision, Paper Review]
 tags: [diffusion]
----   
+typora-root-url: ../
+---
 
 오늘은 AUDIT: Audio Editing by Following Instructions with Latent Diffusion Models 라는 논문에 대해 알아볼 것이다.  
 
@@ -12,7 +13,7 @@ Abstract를 읽어보며 어떤 instruction를 사용하여 오디오를 어떻�
 
 <br>
 
-# Abstract
+## Abstract
 
 Audio editing은 배경 소리 효과 넣기, 음악 악기 대체, 손상된 오디오 복구 등과 같은 목적으로 적용될 수 있다.
 
@@ -26,7 +27,7 @@ Audio editing은 배경 소리 효과 넣기, 음악 악기 대체, 손상된 �
 
 위와 같은 문제를 해결하고자 논문에서는 **AUDIT**을 제안하였다.
 
-![Untitled](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/a1aedf20-db7d-4a85-985c-bbec449458d6)
+![Untitled](/../../images/2023-06-01-[논문 리뷰] AUDIT - Audio Editing by Following Instructions with Latent Diffusion Models/Untitled.png)
 
 AUDIT은 instruction-guided audio editing model인데, latent diffusion 모델을 기반으로 만들어졌다.
 
@@ -45,7 +46,7 @@ AUDIT은 instruction-guided audio editing model인데, latent diffusion 모델�
 
 ## Demo 샘플들을 구경해보자
 
-![Untitled 1](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/91cbbe09-e63f-4861-922c-1826e2b28c1d)
+![Untitled 1](/../../images/2023-06-01-[논문 리뷰] AUDIT - Audio Editing by Following Instructions with Latent Diffusion Models/Untitled 1.png)
 
 - AUDIT 구조는 VAE, T5 Text Encoder, Diffusion network으로 구성된다.
 - audio input의 mel-spectrogram과 텍스트 instructions이 입력으로 들어가고, edited audio가 output으로 생성된다.

@@ -1,8 +1,9 @@
 ---
 title:  "[논문 조사] Video generation에서 Depth 사용하는 논문 조사"
 categories: [My Log, Research & Development Log]
-tags: [diffusion]
----   
+tags: [diffusion, log]
+typora-root-url: ../
+---
 ### 1. [ICLR 2023] PV3D: A 3D Generative Model for Portrait Video Generation
 
 [https://arxiv.org/pdf/2212.06384](https://arxiv.org/pdf/2212.06384)
@@ -14,10 +15,11 @@ tags: [diffusion]
         3. We propose a novel temporal tri-plane based video generation framework that can synthesize 3D-aware portrait videos by learning from 2D videos only.
         
             <video width="100%" controls>
-            <source src="https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/93111ac7-72ed-47e6-86a4-ba0e72333496"/>
+            <source src="/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/v1.mp4"/>
             </video>
         
-            ![Untitled](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/e01208d2-1cd4-4d65-b61f-bda856900cc9)
+            
+            ![Untitled](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled.png)
 
 <br>
 
@@ -26,8 +28,9 @@ tags: [diffusion]
 [Paper: Depth-Aware Generative Adversarial Network for Talking Head Video Generation](https://openaccess.thecvf.com/content/CVPR2022/papers/Hong_Depth-Aware_Generative_Adversarial_Network_for_Talking_Head_Video_Generation_CVPR_2022_paper.pdf)
 
 <video width="100%" controls>
-<source src="https://drive.google.com/uc?export=download&id=1xEug7huary3mfDshl-NAFRH5NclQgqo0"/>
+<source src="/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/v2.mp4"/>
 </video>
+
 
 - **Depth 사용 방식**
     - **depth maps을 기반으로 sparse facial keypoints를 찾아 사람 얼굴의 특징적인 움직임을 포착한다.**
@@ -42,9 +45,9 @@ tags: [diffusion]
 [https://arxiv.org/pdf/2305.06225](https://arxiv.org/pdf/2305.06225)
 
 - **Depth-Aware Generative Adversarial Network for Talking Head Video Generation** 
-논문의 후속 연구이다.
+  논문의 후속 연구이다.
     - we develop a **3D-aware cross-modal (i.e., appearance and depth) attention mechanism,** which can be applied to each generation layer, to **capture facial geometries** in a coarse-to-fine manner.
-        ![Untitled 2](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/887f10ba-2db0-48f1-a5c3-b79520efdf58)
+        ![Untitled 2](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 2.png)![Untitled 2](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/887f10ba-2db0-48f1-a5c3-b79520efdf58)
 
 <br>
 
@@ -54,8 +57,8 @@ tags: [diffusion]
 
 - GD-VDM is based on a two-phase generation process involving generating depth videos followed by a novel diffusion Vid2Vid model that generates a coherent real-world video.
     - ⇒ **depth video를 생성하고, 생성된 depth video를 기반으로 일관된 비디오를 생성한다.**  
-        ![Untitled 3](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/8e96cd49-589e-43d7-978c-e05cf944bc2b)          
-        ![Untitled 4](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/24045fb4-dd73-43c1-b232-8a44616993cc)
+        ![Untitled 3](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 3.png)          
+        ![Untitled 4](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 4.png)
 
 <br> 
 
@@ -64,13 +67,13 @@ tags: [diffusion]
 [https://arxiv.org/pdf/2303.12688](https://arxiv.org/pdf/2303.12688)
 
 - depth-conditioned Stable Diffusion 모델을 사용하였다.
-    ![Untitled 5](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/75c77478-ab21-4780-a6ae-d42d079aca96){: width="400"}  
+    ![Untitled 5](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 5.png){: width="400"}  
 
-    ![Untitled 6](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/c5245840-83aa-44ab-8b19-69b71fbf883f){: width="400"}  
+    ![Untitled 6](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 6.png){: width="400"}  
 
-    ![Untitled 7](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/bd03f44e-35d6-44d2-84dd-e34599356ed6){: width="400"}  
+    ![Untitled 7](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 7.png){: width="400"}  
 
-    ![Untitled 8](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/95973306-dcba-4838-b2e7-9f7a0f823260)
+    ![Untitled 8](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 8.png)
 
 <br>
 
@@ -88,10 +91,10 @@ tags: [diffusion]
 
 - 비디오 editing 분야이지만, 인용이 많이 된 듯 하여 가져왔다.
 - user-provided content와 structure representations의 충돌을 해결하기 위해 depth estimation을 도입하였다.    
-    ![Untitled 9](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/2c16d39d-dcd1-4358-a940-8ff954b401ca)
+    ![Untitled 9](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 9.png)
 
     
-    ![Untitled 10](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/62c7c757-53a3-4ac8-9994-f9c368991bf8)  
+    ![Untitled 10](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 10.png)  
     - Training (depth 부분만 설명)
         1. Midas depth estimation model을 통해 depth maps를 얻는다.
         2. depth maps를 인코딩하여 structure representation s를 추출한다. 
@@ -103,7 +106,7 @@ tags: [diffusion]
 
 [https://arxiv.org/pdf/2307.06940](https://arxiv.org/pdf/2307.06940)
 
-![Untitled 11](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/c60edec2-f081-4234-8853-51878161e2d1){: .center width="500"}  
+![Untitled 11](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 11.png){: .center width="500"}  
 - 과정
     1. Story Script에서 핵심 plots를 추출한다.
     2. plots의 descriptions을 text queries와 prompts에 맞게 조정한다.
@@ -113,7 +116,7 @@ tags: [diffusion]
                 - depth estimator로는 Midas depth estimation model을 사용한다.
                 - conditional LDM to learn controllable video synthesis
                     - motion structure와 text prompt 모두 조건으로 들어간다.                      
-                        ![Untitled 12](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/89a63aab-d2ad-4248-af4c-ef97ebafcf42)
+                        ![Untitled 12](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 12.png)
 
 <br>
 
@@ -122,11 +125,11 @@ tags: [diffusion]
 [https://arxiv.org/pdf/2306.00943](https://arxiv.org/pdf/2306.00943)
 
 - text와 motion structure(depth)를 사용하여 비디오를 생성한다.
-    
-    ![Untitled 13](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/55bc98bd-1a71-41af-abae-89bd1de8cb57){: width="400"}
+  
+    ![Untitled 13](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 13.png){: width="400"}
 
     
-    ![Untitled 14](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/91611627-16f6-4e7d-8405-938bfb8c890f)  
+    ![Untitled 14](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 14.png)  
     - Training (depth 부분만 설명)
         - off-the-shelf depth estimator MiDas 모델을 사용하여, 
         입력 비디오에서 the depth sequence를 추출한다.
@@ -139,12 +142,13 @@ tags: [diffusion]
 [https://arxiv.org/pdf/2306.02018](https://arxiv.org/pdf/2306.02018)
 
 <video width="100%" controls>
-<source src="https://drive.google.com/uc?export=download&id=1WPUIpxU-axV2bLX3E5B-qhSnfIFxGg4D"/>
+<source src="/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/v3.webm"/>
 </video>
+
 
 - 비디오 생성할 때, 텍스트 뿐만 아니라 sketches, depths등 다양한 타입을 조건으로 부여하였다.
 
-![Untitled 15](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/e84efe5f-7844-4bd1-b398-6ae6d58fa87e)
+![Untitled 15](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 15.png)
 - 과정
     1. 비디오는 세 개의 타입의 조건들로 분해된다. 
     (1. **textual condition**, 2. **spatial conditions**, 3. **temporal conditions**)
@@ -162,9 +166,9 @@ tags: [diffusion]
 [https://arxiv.org/pdf/2305.13840](https://arxiv.org/pdf/2305.13840)
 
 - 이 논문도 위의 논문들과 마찬가지로 depths, canny edge, hed edge등 다양한 조건들을 적용하여 텍스트에서 비디오를 생성한다.
-    ![Untitled 16](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/02d806b9-d433-4202-8790-77e229fd0659)
+    ![Untitled 16](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 16.png)
 
-    ![Untitled 17](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/5016d7c2-d2cc-4923-8550-57196a814b25)
+    ![Untitled 17](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 17.png)
 
 <br>
 
@@ -173,29 +177,29 @@ tags: [diffusion]
 [https://arxiv.org/pdf/2305.13077.pdf](https://arxiv.org/pdf/2305.13077.pdf)
 
 - 위의 모델과 마찬가지로 depth와 edge maps를 조건으로 추가하였다.
-    ![Untitled 18](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/de7d3e1b-5fed-4dc7-b895-c91b38613d4c)
+    ![Untitled 18](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 18.png)
 
-    ![Untitled 19](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/2ccd084b-2344-409f-9168-da314e589112)
+    ![Untitled 19](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 19.png)
     
+
 <br>
 
 ### 12. **VideoControlNet: A Motion-Guided Video-to-Video Translation Framework by Using Diffusion Model with ControlNet**
 
 [https://arxiv.org/pdf/2307.14073.pdf](https://arxiv.org/pdf/2307.14073.pdf)
-![Untitled 20](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/8cb8a769-135c-48df-80bb-58fb7bcc3c48)
+![Untitled 20](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 20.png)
 
 <br>
 
 ### 13. **Scenescape: Text-driven consistent scene generation**
 
 [https://arxiv.org/pdf/2302.01133](https://arxiv.org/pdf/2302.01133)
-![Untitled 21](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/f6cef4bd-8dce-4d48-a983-0a5137a8cacc)
+![Untitled 21](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 21.png)
 
 
 - pre-trained text-to-image 모델과 geometric prior를 결합하여 비디오를 생성한다.
     - ⇒ **geometric prior**는 **pre-trained monocular depth prediction model**를 통해 얻는다.
     - temporal consistency보다는 spacial-consistency에 주력한 것 같다.
-        ![Untitled 22](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/ecbad1bc-8d66-4c2b-b266-544bb6ed08ed)
+        ![Untitled 22](/../../images/2023-08-21-[논문 조사] video generation에서 depth 사용하는 논문 조사/Untitled 22.png)
     
     <br>
-    

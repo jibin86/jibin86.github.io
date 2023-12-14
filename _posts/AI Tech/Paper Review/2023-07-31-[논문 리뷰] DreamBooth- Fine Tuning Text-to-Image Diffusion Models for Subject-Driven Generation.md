@@ -2,7 +2,8 @@
 title:  "[논문 리뷰] DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation"
 categories: [AI Tech, Computer Vision, Paper Review]
 tags: [diffusion]
----   
+typora-root-url: ../
+---
 
 [DreamBooth: https://dreambooth.github.io/](https://dreambooth.github.io/)  
 [https://arxiv.org/pdf/2208.12242.pdf](https://arxiv.org/pdf/2208.12242.pdf)
@@ -13,18 +14,18 @@ Diffusion의 Denoising과정을 fine-tuning하여 customize한 데이터를 생�
 
 # Approach
 
-![Untitled](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/8236695b-70ef-482e-8333-72121ec1db33)
+![Untitled](/../../images/2023-07-31-[논문 리뷰] DreamBooth- Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation/Untitled.png)
 
 ## **Fine-Tuning** Text-to-Image diffusion
 
-![Untitled 1](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/8a88365c-d1f4-4460-ba93-bd89515c4d37)
+![Untitled 1](/../../images/2023-07-31-[논문 리뷰] DreamBooth- Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation/Untitled 1.png)
 
 1. low-resolution **text-to-image model**을 **fine-tuning**한다.
     1. **input image**와 **text prompt("A photo of a [T] dog”)** 쌍으로 diffusion model을 fine-tuning한다.
         - **text prompt**는 **unique identifier([T])**와 **class name(dog)**으로 구성된다.
     2. **class-specific prior preservation loss 적용**
-        
-        ![Untitled 2](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/169360a2-fe41-4844-85f9-4d3e4ad9e931)
+       
+        ![Untitled 2](/../../images/2023-07-31-[논문 리뷰] DreamBooth- Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation/Untitled 2.png)
 
         
         - 클래스 이름을 text prompt에 넣어도 (e.g., "A photo of a dog”) dog라는 클래스 prior가 유지될 수 있도록 위의 fine-tuning과 함께 학습한다.   
@@ -35,11 +36,12 @@ Diffusion의 Denoising과정을 fine-tuning하여 customize한 데이터를 생�
     - input images set의 **low-resolution과 high-resolution image쌍**으로 fine-tuning          
         ⇒ 작은 디테일에 대한 높은 정확도 유지 가능
         
+
 <br>
 
 ## Inference
 
-![Untitled 3](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/243db7d5-3c7e-4fc8-9056-23262607e01a)
+![Untitled 3](/../../images/2023-07-31-[논문 리뷰] DreamBooth- Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation/Untitled 3.png)
 
 - **unique identifier**를 다른 문장들에 넣고, **personalized text-to-image** 모델을 통해 이미지를 생성한다.
 
@@ -89,8 +91,8 @@ Diffusion의 Denoising과정을 fine-tuning하여 customize한 데이터를 생�
 - 목표: language-vision dictionary을 확장하여 주어진 대상과 단어를 결합하여 사용자가 원하는 대상이 합성된 이미지를 생성할 수 있도록 하는 것이다.
     - 따라서 새로운 dictionary를 사용하여, 주어진 대상을 their key identifying features를 유지하며 다양한 환경에서 합성할 수 있다.
 - 방식
-    
-    ![Untitled 4](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/6ec5b6a7-5136-4116-9415-774cf66f0055)
+  
+    ![Untitled 4](/../../images/2023-07-31-[논문 리뷰] DreamBooth- Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation/Untitled 4.png)
 
     
     1. 주어진 대상이 포함된 이미지 3~5장이 주어지면, 
@@ -107,8 +109,8 @@ Diffusion의 Denoising과정을 fine-tuning하여 customize한 데이터를 생�
 - initial noise map $\epsilon \sim N(0,I)$ 과 conditioning vector c 를 통해 이미지 $x_{gen}$ 을 생성한다.
     - $x_{gen} = \hat{x}_θ(\epsilon, c)$
 - squared error loss를 사용하여 잠재변수 $z_t$ denoising을 학습한다.
-    
-    ![Untitled 5](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/bb388aff-b600-4ca1-97c1-5e4ffa92512e)
+  
+    ![Untitled 5](/../../images/2023-07-31-[논문 리뷰] DreamBooth- Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation/Untitled 5.png)
 
     
     - 잠재변수 $z_t$ ⇒ $z_t := α_tx + σ_t\epsilon$
@@ -125,8 +127,8 @@ Diffusion의 Denoising과정을 fine-tuning하여 customize한 데이터를 생�
         - overfitting & mode-collapse
     - 방법:
         - 아래의 diffusion loss를 사용하였더니, prior를 잊어버리거나, overfitting 없이, 새로운 정보를 output domain에 잘 통합시킬 수 있었다.
-            
-            ![Untitled 6](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/6f620050-82ad-4be3-ae14-83a92e9fbc8d)
+          
+            ![Untitled 6](/../../images/2023-07-31-[논문 리뷰] DreamBooth- Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation/Untitled 6.png)
 
 <br>   
 
@@ -159,7 +161,7 @@ Diffusion의 Denoising과정을 fine-tuning하여 customize한 데이터를 생�
         1. identifier를 잘 나타내는 텍스트로 변환된다.
     - uniform random sampling of tokens과 tokens in the T5-XXL tokenizer를 사용하는 것이 좋은 성능을 냈다.
     
-    ![Untitled 7](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/6a389b14-708b-4cfd-85b7-6719200e35c2)
+    ![Untitled 7](/../../images/2023-07-31-[논문 리뷰] DreamBooth- Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation/Untitled 7.png)
     
     - $f$ : tokenizer; 문자 시퀀스를 토큰들로 매핑해주는 function
     - $\hat{V}$ :  decoded된 text
@@ -186,37 +188,35 @@ Diffusion의 Denoising과정을 fine-tuning하여 customize한 데이터를 생�
       <br>
 
   - Loss
-      
-      ![Untitled 6](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/6f620050-82ad-4be3-ae14-83a92e9fbc8d)
+    
+      ![Untitled 6](/../../images/2023-07-31-[논문 리뷰] DreamBooth- Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation/Untitled 6-1702523599094-89.png)
 
       
       - 위 Loss의 앞부분은 text-to-image diffusion model의 Loss이다. (Reconstruction Loss)
-          
-          ![Untitled 8](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/e67fd4d1-bc7d-49ea-b7e7-40aef72f7f0b)
+        
+          ![Untitled 8](/../../images/2023-07-31-[논문 리뷰] DreamBooth- Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation/Untitled 8.png)
 
-          
       - 두 번째 부분의 Loss는 논문에서 제시하는 prior-preservation term이다. (Class-Specific Prior Preservation Loss)
-          
-          ![Untitled 9](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/033b6521-e3d3-4928-ba96-ed0f5594ea99)
-
+        
+          ![Untitled 9](/../../images/2023-07-31-[논문 리뷰] DreamBooth- Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation/Untitled 9.png)
+      
           
           - frozen pre-trained diffusion model 로 생성된 이미지를 레이블로 삼아 모델을 fine-tuning 한다.
               - $x_{pr}$ : frozen pre-trained diffusion model로 생성된 이미지
               - $λ$: relative weight을 조절한다.
               
-              ![Untitled 2](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/169360a2-fe41-4844-85f9-4d3e4ad9e931)
+              ![Untitled 2](/../../images/2023-07-31-[논문 리뷰] DreamBooth- Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation/Untitled 2-1702523609984-93.png)
 
 
-              
-      - prior-preservation loss로 인해 학습을 오랫동안해도 overfitting의 위험이 없다.
-          - 하이퍼파라미터 설정 ⇒ good result
-              - λ=1로 1000번 반복
-              - Imagen: learning_rate: $10^{-5}$
-              - Stable Diffusion: learning_rate: $5\times 10^{-6}$
-              - subject dataset size: 3~5개
-          - 학습 시간
-              - 5 minutes on one TPUv4 for Imagen
-              - 5 minutes on a NVIDIA A100 for Stable Diffusion
+​      - prior-preservation loss로 인해 학습을 오랫동안해도 overfitting의 위험이 없다.
+​          - 하이퍼파라미터 설정 ⇒ good result
+​              - λ=1로 1000번 반복
+​              - Imagen: learning_rate: $10^{-5}$
+​              - Stable Diffusion: learning_rate: $5\times 10^{-6}$
+​              - subject dataset size: 3~5개
+​          - 학습 시간
+​              - 5 minutes on one TPUv4 for Imagen
+​              - 5 minutes on a NVIDIA A100 for Stable Diffusion
 
 <br>
 
@@ -226,7 +226,7 @@ Diffusion의 Denoising과정을 fine-tuning하여 customize한 데이터를 생�
 
 ### 4.1.1 Dataset
 
-![Untitled 10](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/f8cc65d3-e83d-45a4-bbe3-3a9a6cbb0245)
+![Untitled 10](/../../images/2023-07-31-[논문 리뷰] DreamBooth- Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation/Untitled 10.png)
 
 - 30개의 subject 수집
     - backpacks, stuffed animals, dogs, cats, sunglasses, cartoons, etc.
@@ -263,7 +263,7 @@ Diffusion의 Denoising과정을 fine-tuning하여 customize한 데이터를 생�
 
 ### 4.3.1. Prior Preservation Loss Ablation
 
-![Untitled 11](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/ba91051b-8c29-400e-b21f-0a5f4ee08f8c)
+![Untitled 11](/../../images/2023-07-31-[논문 리뷰] DreamBooth- Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation/Untitled 11.png)
 
 - 15개의 subject로 Imagen을 fine-tuning 하였다.
     - prior preservation loss(PPL)를 적용한 fine-tuning
@@ -276,7 +276,7 @@ Diffusion의 Denoising과정을 fine-tuning하여 customize한 데이터를 생�
 
 ### 4.3.2. Class-Prior Ablation
 
-![Untitled 12](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/fd07e9af-a66b-44ff-8a32-f9b77b2d5a22)
+![Untitled 12](/../../images/2023-07-31-[논문 리뷰] DreamBooth- Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation/Untitled 12.png)
 
 - 5개의 subject로 Imagen을 fine-tuning 하였다.
     - no class noun
@@ -285,6 +285,7 @@ Diffusion의 Denoising과정을 fine-tuning하여 customize한 데이터를 생�
     
     ⇒ 셋 중 **correct class noun**를 적용한 모델이 ****가장 성능이 좋았다.
     
+
 <br>
 
 ## 4.4. Applications
@@ -296,8 +297,9 @@ Diffusion의 Denoising과정을 fine-tuning하여 customize한 데이터를 생�
     - 주어진 대상에 대해서. 다양한 이미지를 생성할 수 있다.
     - 주어진 대상의 디테일을 보존하면서, 배경과 대상 간의 interaction이 가능하다.
     
-    ![Untitled](https://i.ibb.co/2dN7hKL/Untitled-13.png)
+    ![Untitled13](/../../images/2023-07-31-[논문 리뷰] DreamBooth- Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation/Untitled 13.png)
     
+
 <br>
 
 ### 4.4.2. Art Rendition
@@ -306,7 +308,7 @@ Diffusion의 Denoising과정을 fine-tuning하여 customize한 데이터를 생�
 - 주어진 대상을 가지고 유명한 화가의 스타일을 art rendition한 결과
     - **“a painting of a [V] [class noun] in the style of [famous painter]”** 또는 **“a statue of a [V] [class noun] in the style of [famous sculptor]”** 프롬프트 사용
     
-    ![Untitled](https://i.ibb.co/xfM5Jsd/Untitled-14.png)
+    ![Untitled14](/../../images/2023-07-31-[논문 리뷰] DreamBooth- Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation/Untitled 14.png)
     
     - 화가의 스타일을 잘 모방한 것을 알 수 있다.
 
@@ -315,8 +317,8 @@ Diffusion의 Denoising과정을 fine-tuning하여 customize한 데이터를 생�
 ### 4.4.3. Text-Guided View Synthesis
 
 - 대상의 다양한 view-point 구현 가능
-    
-    ![Untitled](https://i.ibb.co/tc7CRVy/Untitled-15.png)
+  
+    ![Untitled15](/../../images/2023-07-31-[논문 리뷰] DreamBooth- Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation/Untitled 15.png)
     
 - view-point에 따라 배경도 변한다.
 - 고양이 이마의 복잡한 무늬도 보존 가능하다는 것을 알 수 있다.
@@ -325,7 +327,7 @@ Diffusion의 Denoising과정을 fine-tuning하여 customize한 데이터를 생�
 
 ### 4.4.4. Property Modification
 
-![Untitled](https://i.ibb.co/5YxbPd7/Untitled-16.png)
+![Untitled16](/../../images/2023-07-31-[논문 리뷰] DreamBooth- Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation/Untitled 16.png)
 
 - 첫 번째 줄은 color 수정
     - **“a [color] [V] car”** 프롬프트 사용
@@ -336,7 +338,7 @@ Diffusion의 Denoising과정을 fine-tuning하여 customize한 데이터를 생�
 
 ### 4.4.5. **Accessorization**
 
-![Untitled](https://i.ibb.co/XsBgHM6/Untitled-17.png)
+![Untitled17](/../../images/2023-07-31-[논문 리뷰] DreamBooth- Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation/Untitled 17.png)
 
 - 주어진 대상 강아지에게 악세사리, 옷 등을 입힌다.
     - **“a [V] dog wearing a police/chef/witch outfit”** 프롬프트 사용

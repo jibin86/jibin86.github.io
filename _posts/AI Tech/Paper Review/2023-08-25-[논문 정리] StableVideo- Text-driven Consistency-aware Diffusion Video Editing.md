@@ -3,19 +3,12 @@ title:  "[논문 정리] StableVideo: Text-driven Consistency-aware Diffusion Vi
 categories: [AI Tech, Computer Vision, Paper Review]
 tags: [diffusion]
 use_math: true
+typora-root-url: ../
 ---
-
-![1](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/1f5cbdd3-f425-43d3-955e-4390b779dcfc)
-
-![2](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/aff386d9-0719-490a-862a-133ea6fb19d8)
-
-![3](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/99a8d700-beb7-44b0-bf87-9b17706e3f6c)
-
 
 오늘은 StableVideo 논문을 읽어보고자 한다.  
 이 논문은 텍스트 기반으로 비디오를 수정하는 분야를 다룬 논문이다.  
 논문의 목적과, 모델 구조를 중심으로 정리하였다.
-
 
 [https://arxiv.org/pdf/2308.09592.pdf](https://arxiv.org/pdf/2308.09592.pdf)
 
@@ -109,9 +102,10 @@ use_math: true
 **1.2. Condition ⇒ Text Prompt**
 
 - cross-attention을 통해 디퓨전 모델의 조건으로 들어간다.
-    
+  
     ![Untitled](https://i.ibb.co/zfkmWFb/Untitled-3.png)
     
+
 <br>
 
 ### 2. $g_f$: 전경 key frames를 수정하는 diffusion 모델
@@ -121,7 +115,7 @@ use_math: true
 **2.1. Condition ⇒ structure guidance (보라색 화살표)**
 
 - structure guidance로 canny edge를 사용하며, concatenation하여 디퓨전 모델의 조건으로 들어간다.
-    
+  
     ![Untitled](https://i.ibb.co/V3Vdkqt/Untitled-5.png)
     
 - $g_f$ 가 수정된 전경과 기존의 전경 간의 기하학적 일관성을 유지할 수 있도록 하는 데에 사용된다.
@@ -132,9 +126,10 @@ use_math: true
 **2.2. Condition ⇒ Text Prompt**
 
 - cross-attention을 통해 디퓨전 모델의 조건으로 들어간다.
-    
+  
     ![Untitled](https://i.ibb.co/zfkmWFb/Untitled-3.png)
     
+
 <br>
 
 ## 전경(foreground)과 배경(background) 편집(editing)하는 방식
@@ -144,13 +139,13 @@ use_math: true
 ### 전경(foreground)
 
 1. **inter-frame propagation module을 사용하여 프레임의 concept을 전파한다. ⇒ 시간적, 기하학적 일관성 유지**
-    
+   
     ⇒ 3.2. Inter-frame Propagation (foreground editing)
     
     ![Untitled](https://i.ibb.co/xCDZTYr/Untitled-6.png)
     
 2. **key frame editing 방식으로 Aggregation Network를 통해 atlas를 생성한다.**
-    
+   
     ⇒ 3.3. Aggregation Network
     
     ![Untitled](https://i.ibb.co/QdFZD7B/Untitled-7.png)
@@ -170,7 +165,7 @@ use_math: true
     - $M^b(I_i), \space M^f(I_i),\space M^α(I_i)$: 픽셀 좌표 시스템(Pixel coordinate system)
         - 각각 **background, foreground, foreground opacity**에 해당하는 atlas들을 **픽셀(프레임)으로 매핑**해주는 네트워크이다.
         - 픽셀 좌표 시스템(Pixel coordinate system)이라고 불리며 다음과 같은 수식으로 표현할 수 있다.
-            
+          
             ![Untitled](https://i.ibb.co/R7CkmWv/Untitled-8.png)
             
             - $I$: 입력 비디오
@@ -180,16 +175,16 @@ use_math: true
 
 - 아래 수식은 **Atlas representation**에서 **Pixel(프레임)**으로 매핑하는 수식이다.
 (Atlas ⇒ Pixel Frame)
-    
+  
     ![Untitled](https://i.ibb.co/vHV2T5G/Untitled-9.png){: width="400"}
-    
+  
     - $A^b, A^f$: 각각 background와 foreground의 **atlas representation**
     - $B_i, F_i$: 각각 background, foreground atlas representation 부분에 해당하는 **픽셀**
 
     <br>
 
 - 전체 비디오가 재구성되는 수식
-    
+  
     ![Untitled](https://i.ibb.co/zP7rJyM/Untitled-10.png)
     
     - 요약하자면, 생성된 atlas representation $A$ 을 해당 픽셀 좌표(프레임)로 변환하고. $\alpha_i$를 이용해서 배경(background)과 전경(foreground)을 합쳐 편집된 비디오를 완성한다.
@@ -202,7 +197,7 @@ use_math: true
 
 - **Inter-frame Propagation**은 한 프레임에서 다음 프레임으로 concept을 전달(propagation)하는 역할을 한다.
 - structure conditions $C_{i}$만 추가하는 것은 temporally consistent geometry를 보장할 수 없다.
-    
+  
     ⇒ 따라서 이 논문에서는 **conditional denoising process**를 통해 diffusion model이 **현재 프레임에 대한 구조(structure)** $C_{i}$와 **이전 프레임의 appearance 정보 $\hat{E}_i$** 를 고려할 수 있도록 한다.
     
 - inter-frame propagation은 foreground object에만 적용한다.
@@ -221,13 +216,13 @@ use_math: true
     
 2. 첫 (key) 프레임의 **structure $C_0$** (보라색 점선)와 **Text Prompt**를 diffusion 모델에 넣어 수정된 첫 프레임 $E_0$을 얻는다. 
     - $E_0=g^f(T,C_0)$
-        
+      
         ![Untitled](https://i.ibb.co/VL8BYZF/Untitled-13.png)
 
     <br>
-        
-3. 그 다음  $(UV_{0}^f)^{-1}$ 를 거쳐 프레임(픽셀)을 첫 프레임의 atlas $A^f_{0}$로 변환한다.
     
+3. 그 다음  $(UV_{0}^f)^{-1}$ 를 거쳐 프레임(픽셀)을 첫 프레임의 atlas $A^f_{0}$로 변환한다.
+   
     $A^f_{0}=(UV^f_{0})^{-1}(E_0)$
     
     ![Untitled](https://i.ibb.co/pZf2DWy/Untitled-14.png)
@@ -235,7 +230,7 @@ use_math: true
     <br>
     
 4. 그 다음, $\alpha_1 \space ◦ \space UV_{1}^f$ 를 거쳐 atlas $A^f_{0}$ 을 불완전한(incomplete) 다음 프레임 $\hat{E}_1$ 을 얻는다.
-    
+   
     $\hat{E}\_1=\alpha_1 \space ◦ \space UV_{1}^f(A^f_{0})$ 
     
     ![Untitled](https://i.ibb.co/gw38k2C/Untitled-15.png)
@@ -248,15 +243,15 @@ use_math: true
 
 6. 불완전한(incomplete) 현재 프레임 $\hat{E}\_{i-1}$ 을 현재 프레임의 structure $C_{i-1}$와 함께 diffusion model을 통과시켜 사실적인 현재 프레임 $E_{i-1}$ 을 얻는다.
     - 이때 SDEdit와 ILVR처럼 추정된 현재 프레임 $\hat{E}_{i-1}$ 에 noise를 일부 추가하고, 이를 denoising하여 더욱 정확한 output을 얻는다.
-        
+      
         ![Untitled](https://i.ibb.co/9q55NCG/Untitled-16.png)
         
         ![Untitled](https://i.ibb.co/V3Vdkqt/Untitled-5.png)
 
     <br>
-        
-7. 그 다음  $(UV_{i-1}^f)^{-1}$ 를 거쳐 프레임(픽셀) $E_{i-1}$을 현재 프레임의 atlas $A^f_{t-1}$로 변환한다.
     
+7. 그 다음  $(UV_{i-1}^f)^{-1}$ 를 거쳐 프레임(픽셀) $E_{i-1}$을 현재 프레임의 atlas $A^f_{t-1}$로 변환한다.
+   
     ![Untitled](https://i.ibb.co/wppKShf/Untitled-17.png)
     
     ![Untitled](https://i.ibb.co/q55GJTP/Untitled-18.png)
@@ -264,7 +259,7 @@ use_math: true
     <br>
     
 8. 그 다음, $\alpha_i \space ◦ \space UV_{i}^f$ 를 거쳐 atlas $A^f_{i-1}$ 을 불완전한(incomplete) 다음 프레임 $\hat{E}_i$으로 변환한다.
-    
+   
     ![Untitled](https://i.ibb.co/TLVZBdG/Untitled-19.png)
 
     <br>
@@ -294,6 +289,7 @@ use_math: true
     - 즉, 통합되기 전 key frame들(**Edited Frames**)과 통합된 atlas에서 key frame과 같은 시점의 frames들(**Reconstructed Frames**)이 같아지는 방향으로 학습된다.  
         ![Untitled](https://i.ibb.co/s9KKQ5C/Untitled-22.png)
         
+
 <br>
 
 ## 3.4. Background Editing Process & Edited Foreground object와 합치는 Process

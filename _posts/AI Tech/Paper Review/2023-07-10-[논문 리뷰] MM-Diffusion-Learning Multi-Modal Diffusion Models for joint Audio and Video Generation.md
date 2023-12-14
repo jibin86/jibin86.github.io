@@ -2,7 +2,8 @@
 title:  "[논문 리뷰] MM-Diffusion: Learning Multi-Modal Diffusion Models for joint Audio and Video Generation"
 categories: [AI Tech, Computer Vision, Paper Review]
 tags: [diffusion]
----   
+typora-root-url: ../
+---
 
 오늘은 비디오를 생성하는 분야 중 하나인 MM diffusion에 대해서 정리하려고 한다.  
 MM diffusion은 오디오와 비디오를 동시에 생성하는 모델이다.  
@@ -16,7 +17,7 @@ MM diffusion은 오디오와 비디오를 동시에 생성하는 모델이다.
 
 ## 1.1. 방법
 
-![Untitled](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/68f1550c-8d12-4957-8d14-801276f46a2b)
+![Untitled](/../../images/2023-07-10-[논문 리뷰] MM-Diffusion-Learning Multi-Modal Diffusion Models for joint Audio and Video Generation/Untitled.png)
 
 - (a) MM-Diffusion은 **Multi-Modal Diffusion (MM-Blocks)**과 2개의 **denosing autoencoders**으로 구성되었다.
     - **Multi-Modal Diffusion** 모델은 **sequential multi-model U-Net**으로 구성되어, 함께 **Denoising** 과정을 거친다.
@@ -124,7 +125,7 @@ MM diffusion은 오디오와 비디오를 동시에 생성하는 모델이다.
 
 ## 4.1. Preliminaries of Vanilla Diffusion
 
-![Untitled 1](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/e6471c9d-23aa-4436-b574-9b641075626d)
+![Untitled 1](/../../images/2023-07-10-[논문 리뷰] MM-Diffusion-Learning Multi-Modal Diffusion Models for joint Audio and Video Generation/Untitled 1.png)
 
 - $t ∈ \[1, T]$,
 - $β_0, β_1, ..., β_T$: 사전에 정의된 schedule 변수 ⇒ 이 논문에서는 linear noise schedule 사용한다.
@@ -132,7 +133,7 @@ MM diffusion은 오디오와 비디오를 동시에 생성하는 모델이다.
 <br>
 
 - 원본 이미지로 복원하기 위해서, forward process를 reverse하는 과정을 학습한다.  
-    ![Untitled 2](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/9a6acf9a-bd24-40cf-af7b-042cd767a42b)  
+    ![Untitled 2](/../../images/2023-07-10-[논문 리뷰] MM-Diffusion-Learning Multi-Modal Diffusion Models for joint Audio and Video Generation/Untitled 2.png)  
     - ⇒ 모델 $\theta$ 를 학습하여 $p_\theta(x_{t-1}\|x_t)$ 를 구하는데 이는 $q(x_{t-1}\|x_t, x_0)$ 을 근사화한 것이다.
     - 우리는 (3) $p_\theta(x_{t-1}\|x_t)$ 의 매 시점 평균과 분산을 구해야한다. (논문에서 분산 예측은 제거. 성능 향상이 조금밖에 이뤄지지 않기 때문)
     - (4)은 $p(x_T)$의 상태에서 디노이징하는 상태를 곱해서 $p(x_0)$의 상태로 만드는 수식이다.
@@ -141,21 +142,21 @@ MM diffusion은 오디오와 비디오를 동시에 생성하는 모델이다.
 
 ## 4.2. Multi-Modal Diffusion Models
 
-![Untitled 3](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/c021d6de-7b29-45db-bf9e-1f7b47c0d287)
+![Untitled 3](/../../images/2023-07-10-[논문 리뷰] MM-Diffusion-Learning Multi-Modal Diffusion Models for joint Audio and Video Generation/Untitled 3.png)
 
 - 3.1에서 다룬 vanilla diffusion은 single modality 생성한다. 이 논문의 목적은 2개의 일치하는 modalities를 복원(생성)하는 것이다.
 - 오디오와 비디오의 시점이 $a_t$, $v_t$로 각각 주어졌을 때, 오디오 $a_{t-1}$의 분포와 $v_{t-1}$의 분포를 알아보자.
 - paired data $(a, v)$의 $a$와 $v$는 다른 분포를 가졌기에 독립이다.
 - $q(a_{t−1}\|a_t, a_0)$ 와 $q(v_{t−1}\|v_t, v_0)$ 를 각각 바로 fitting하지 않고, unified model $\theta_{av}$ 로 합쳐서 하나의 디퓨전 프로세스를 만들어 fitting한다.
 - 즉, $a$와 $v$의 결합분포 $p_θ{\_{av}}(a\_{t−1}\|(a\_t, v_t))$ 를 예측하는 것이다.
-    
-    ![Untitled 4](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/3b765953-02f4-40c1-b602-4e621deac706)      
+  
+    ![Untitled 4](/../../images/2023-07-10-[논문 리뷰] MM-Diffusion-Learning Multi-Modal Diffusion Models for joint Audio and Video Generation/Untitled 4.png)      
     - 위 수식은 A = $a_t$와 V = $v_t$가 주어졌을 때, $a_{t-1}$의 확률 분포이다.
 
 <br>
 
 - Loss      
-    ![Untitled 5](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/d9ac9a9e-36df-41dc-b015-849f788bda5f)      
+    ![Untitled 5](/../../images/2023-07-10-[논문 리뷰] MM-Diffusion-Learning Multi-Modal Diffusion Models for joint Audio and Video Generation/Untitled 5.png)      
     - $t ∈ [0, T]$ 이고, $λ_t$ 는 optional 하게 가중치를 부여하는 함수이다.
 
 <br>
@@ -216,7 +217,7 @@ MM diffusion은 오디오와 비디오를 동시에 생성하는 모델이다.
             1. $f_{start} = (i + R)\%F$
             2. $f_{end} = (i+R+S)\%F$
     3. 오디오 segment a_i와 sampled된 video segment v_j의 Cross attention을 수행한다.          
-        ![Untitled 6](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/d63c1b0a-8238-4b09-ae5a-0fa9e3d53a9f)          
+        ![Untitled 6](/../../images/2023-07-10-[논문 리뷰] MM-Diffusion-Learning Multi-Modal Diffusion Models for joint Audio and Video Generation/Untitled 6.png)          
         - 장점1. 계산 복잡도가 줄어들었다
             - ⇒ $O((S × H × W) × (S × T/F))$
                 - 모든 프레임에 대해서 계산하는 것이 아닌 프레임보다 큰 단위인 S를 적용한다.
@@ -236,14 +237,16 @@ MM diffusion은 오디오와 비디오를 동시에 생성하는 모델이다.
         <br>
 
     2. improved gradient guided method          
-        ![Untitled 7](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/da119b2b-a7ca-443f-a068-7dfb1a9f9c6f)          
+        ![Untitled 7](/../../images/2023-07-10-[논문 리뷰] MM-Diffusion-Learning Multi-Modal Diffusion Models for joint Audio and Video Generation/Untitled 7.png)          
+        
         - original v를 고려하고자한다.              
-            ![Untitled 8](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/295279d7-8020-42f9-9001-0da19e64c6a9)              
+            ![Untitled 8](/../../images/2023-07-10-[논문 리뷰] MM-Diffusion-Learning Multi-Modal Diffusion Models for joint Audio and Video Generation/Untitled 8.png)              
+            
             - $\tilde{a}\_t$는 reverse process에서 구한 $a_t$ 와 $v_t$ , 그리고 $v\_{t-1}$ 에서 forward process에서 구한 $\hat{v}_t$ 를 기반으로 생성된 오디오다.
             - $\lambda$ 는 gradient weight 역할을 하여, conditioning 강도를 조절한다.
-
+            
             <br>
-
+            
         - 기존의 conditional generation 모델과의 차이점
             - 기존: condition data에 대해서 학습을 시켜야한다. (condition을 변경할 필요 없음)
             - 논문: condition data에 대해서 학습 필요 없다. (reverse process를 함께 거치므로 조건이 process 거칠 때마다 변경됨)
@@ -252,7 +255,7 @@ MM diffusion은 오디오와 비디오를 동시에 생성하는 모델이다.
 
 # 5. Experiments
 
-![Untitled 9](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/a8054f6e-e718-4983-96e0-d66c8d3c689c)
+![Untitled 9](/../../images/2023-07-10-[논문 리뷰] MM-Diffusion-Learning Multi-Modal Diffusion Models for joint Audio and Video Generation/Untitled 9.png)
 
 
 ## 5.1. Implementation Details
@@ -306,7 +309,7 @@ MM diffusion은 오디오와 비디오를 동시에 생성하는 모델이다.
 
 ## 5.3 Objective Comparison with SOTA methods
 
-![Untitled 10](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/e4606343-a2cd-47cc-9029-215f030f34e4)
+![Untitled 10](/../../images/2023-07-10-[논문 리뷰] MM-Diffusion-Learning Multi-Modal Diffusion Models for joint Audio and Video Generation/Untitled 10.png)
 
 - Quality 비교
     - 비디오 생성: SOTA 모델인 DIGAN과 TATS와 비교하였다.
@@ -327,8 +330,8 @@ MM diffusion은 오디오와 비디오를 동시에 생성하는 모델이다.
 ### 5.4.1. Random-Shift based Multi-modal Attention
 
 1. Differnet window sizes
-    
-    ![Untitled 11](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/ed0aedbb-f097-4fc2-8fc0-009bdd42bebf)
+   
+    ![Untitled 11](/../../images/2023-07-10-[논문 리뷰] MM-Diffusion-Learning Multi-Modal Diffusion Models for joint Audio and Video Generation/Untitled 11.png)
 
     
     - U-Net scale [2,3,4]에 window size를 각각 다르게해서 측정하였다.
@@ -338,8 +341,8 @@ MM diffusion은 오디오와 비디오를 동시에 생성하는 모델이다.
     <br>
 
 2. Random Shift mechanism
-    
-    ![Untitled 12](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/743183ef-5f08-42d8-ae06-5b6f74fef4a8)
+   
+    ![Untitled 12](/../../images/2023-07-10-[논문 리뷰] MM-Diffusion-Learning Multi-Modal Diffusion Models for joint Audio and Video Generation/Untitled 12.png)
 
     
     - 오디오 생성 부분에서 Random shift를 적용한 모델이 더 좋은 성능을 보여주고, 수렴 속도가 빠르다.
@@ -350,7 +353,7 @@ MM diffusion은 오디오와 비디오를 동시에 생성하는 모델이다.
 
 ### 5.4.2. Zero-Shot Conditional Generation
 
-![Untitled 13](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/9d4d4099-2c39-4d06-864b-07c94280d0a2)
+![Untitled 13](/../../images/2023-07-10-[논문 리뷰] MM-Diffusion-Learning Multi-Modal Diffusion Models for joint Audio and Video Generation/Untitled 13.png)
 
 
 - 비디오 생성 분야에서 gradient-guided method가 replacement method 보다 성능이 좋았다.
@@ -362,8 +365,8 @@ MM diffusion은 오디오와 비디오를 동시에 생성하는 모델이다.
 
 ### 5.5.1. Comparison with other Methods
 
-![Untitled 14](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/ab42b3aa-6210-453f-a407-484a528b5246)
+![Untitled 14](/../../images/2023-07-10-[논문 리뷰] MM-Diffusion-Learning Multi-Modal Diffusion Models for joint Audio and Video Generation/Untitled 14.png)
 
 ### 5.5.2. Turing Test
 
-![Untitled 15](https://github.com/jibin86/RealTimeFaceRecognition/assets/89712324/775f3f50-8adf-4b06-abe7-da3bdd2d5934)
+![Untitled 15](/../../images/2023-07-10-[논문 리뷰] MM-Diffusion-Learning Multi-Modal Diffusion Models for joint Audio and Video Generation/Untitled 15.png)
