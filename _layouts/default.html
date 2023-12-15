@@ -15,6 +15,11 @@
     {% if page.use_math %}
       {% include mathjax_support.html %}
     {% endif %}
+    <style>
+      /* 사이드바 스크롤바 없애기 */
+      .sidebar{ -ms-overflow-style: none; }
+      .sidebar::-webkit-scrollbar{ display:none; }
+    </style>
   </head>
 
   <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">

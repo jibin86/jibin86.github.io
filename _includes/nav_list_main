@@ -12,14 +12,21 @@
                     </style>
         </li>
         
-        <li>         
-            
+        <li> 
             <!-- AI Tech -->
-            {% for category in site.categories %}
+            <!-- <style>
+                summary {list-style: none;}
+                summary::-webkit-details-marker {display: none;}
+                </style> -->
+            <!-- <details> -->
+                {% for category in site.categories %}
             {% if category[0] == "AI Tech" %}
-            <span class="nav__sub-title"><a href="/categories/ai_tech" class="">AI Tech ({{category[1].size}})</a></span>
+            <!-- <summary> -->
+                <span class="nav__sub-title"><a href="/categories/ai_tech" class="">AI Tech ({{category[1].size}})</a></span>
+            <!-- </summary> -->
             {% endif %}
             {% endfor %}
+        
             <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
             <ul>
                 {% for category in site.categories %}
@@ -86,6 +93,7 @@
                 {% endif %}
                 {% endfor %}
             </ul>
+            <!-- </details>    -->
 
             <!--My Log-->
             {% for category in site.categories %}
